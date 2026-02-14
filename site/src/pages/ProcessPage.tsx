@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { Gauge, GitBranch, Sparkles } from "lucide-react";
 
 const COLORS = {
   accent: "#2CC6B8",
@@ -36,7 +36,7 @@ export default function ProcessPage(): JSX.Element {
             variants={stagger}
           >
             <motion.div className="kicker" variants={reveal}>
-              Como trabalhamos
+              <GitBranch size={14} /> Como trabalhamos
             </motion.div>
             <motion.h2 className="h2" variants={reveal}>
               Processo claro. Entrega consistente.
@@ -118,7 +118,7 @@ export default function ProcessPage(): JSX.Element {
             variants={stagger}
           >
             <motion.div className="kicker" variants={reveal}>
-              Governança de execução
+              <Gauge size={14} /> Governança de execução
             </motion.div>
             <motion.h2 className="h2" variants={reveal}>
               Ritos e práticas para manter qualidade do início ao fim.

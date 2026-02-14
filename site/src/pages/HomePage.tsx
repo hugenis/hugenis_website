@@ -1,5 +1,6 @@
 import type { JSX } from "react";
 import { motion } from "framer-motion";
+import { Sparkles } from "lucide-react";
 
 const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -76,7 +77,7 @@ export default function HomePage(): JSX.Element {
             variants={stagger}
           >
             <motion.div className="kicker" variants={reveal}>
-              Nossa atuação
+              <Sparkles size={14} /> Nossa atuação
             </motion.div>
             <motion.h2 className="h2" variants={reveal}>
               Tecnologia aplicada com método, proximidade e impacto prático.

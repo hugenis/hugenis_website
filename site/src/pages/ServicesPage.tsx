@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 import { motion } from "framer-motion";
-import { Boxes, Brain, Code2, Database, ShieldCheck, Workflow, Check } from "lucide-react";
+import { Boxes, Brain, Code2, Database, ShieldCheck, Workflow, Check, ClipboardList, Layers } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 const COLORS = {
@@ -67,7 +67,7 @@ export default function ServicesPage(): JSX.Element {
             variants={stagger}
           >
             <motion.div className="kicker" variants={reveal}>
-              O que fazemos
+              <Layers size={14} /> O que fazemos
             </motion.div>
             <motion.h2 className="h2" variants={reveal}>
               Tecnologia com profundidade, do software aos dados e à IA.
@@ -135,7 +135,7 @@ export default function ServicesPage(): JSX.Element {
             variants={stagger}
           >
             <motion.div className="kicker" variants={reveal}>
-              Entregáveis
+              <ClipboardList size={14} /> Entregáveis
             </motion.div>
             <motion.h2 className="h2" variants={reveal}>
               O que normalmente entregamos em cada frente.

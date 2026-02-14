@@ -1,5 +1,6 @@
 import type { JSX } from "react";
 import { motion } from "framer-motion";
+import { GraduationCap, Target, UserRound } from "lucide-react";
 
 const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -34,7 +35,7 @@ export default function AboutPage(): JSX.Element {
             variants={stagger}
           >
             <motion.div className="kicker" variants={reveal}>
-              Sobre nós
+              <Target size={14} /> Sobre nós
             </motion.div>
             <motion.h2 className="h2" variants={reveal}>
               Construímos tecnologia com propósito, coragem e consistência.
@@ -86,7 +87,7 @@ export default function AboutPage(): JSX.Element {
             variants={stagger}
           >
             <motion.div className="kicker" variants={reveal}>
-              Formação de novos talentos
+              <GraduationCap size={14} /> Formação de novos talentos
             </motion.div>
             <motion.h2 className="h2" variants={reveal}>
               Uma frente dedicada a preparar jovens para uma carreira técnica fora da média.
@@ -139,7 +140,7 @@ export default function AboutPage(): JSX.Element {
             variants={stagger}
           >
             <motion.div className="kicker" variants={reveal}>
-              Sobre o fundador
+              <UserRound size={14} /> Sobre o fundador
             </motion.div>
           </motion.div>
 

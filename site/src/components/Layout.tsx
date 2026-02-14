@@ -1,28 +1,42 @@
-import type { JSX, ReactNode } from "react";
+import type { JSX, MouseEvent, ReactNode } from "react";
+import { BookOpenCheck, BriefcaseBusiness, Home, UserRound } from "lucide-react";
 import { Wordmark } from "./Brand";
 
 type NavItem = {
   href: string;
   label: string;
+  icon: JSX.Element;
 };
 
 const NAV_ITEMS: NavItem[] = [
-  { href: "/o-que-fazemos", label: "O que fazemos" },
-  { href: "/como-trabalhamos", label: "Como trabalhamos" },
-  { href: "/sobre-nos", label: "Sobre nós" },
+  { href: "/", label: "Início", icon: <Home size={15} /> },
+  { href: "/o-que-fazemos", label: "O que fazemos", icon: <BriefcaseBusiness size={15} /> },
+  { href: "/como-trabalhamos", label: "Como trabalhamos", icon: <BookOpenCheck size={15} /> },
+  { href: "/sobre-nos", label: "Sobre nós", icon: <UserRound size={15} /> },
 ];
 
 type SiteLayoutProps = {
   activePath: string;
+  onNavigate: (path: string) => void;
   children: ReactNode;
 };
 
-export function SiteLayout({ activePath, children }: SiteLayoutProps): JSX.Element {
+export function SiteLayout({ activePath, onNavigate, children }: SiteLayoutProps): JSX.Element {
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>, path: string) => {
+    event.preventDefault();
+    onNavigate(path);
+  };
+
   return (
     <div className="page">
       <header className="topbar">
         <div className="container topbar__inner">
-          <a className="topbar__logo" href="/" aria-label="Ir para a página inicial">
+          <a
+            className="topbar__logo"
+            href="/"
+            aria-label="Ir para a página inicial"
+            onClick={(event) => handleClick(event, "/")}
+          >
             <Wordmark variant="dark" />
           </a>
 
@@ -31,9 +45,11 @@ export function SiteLayout({ activePath, children }: SiteLayoutProps): JSX.Eleme
               <a
                 key={item.href}
                 href={item.href}
+                onClick={(event) => handleClick(event, item.href)}
                 className={`navLink ${activePath === item.href ? "isActive" : ""}`}
               >
-                {item.label}
+                {item.icon}
+                <span>{item.label}</span>
               </a>
             ))}
           </nav>
