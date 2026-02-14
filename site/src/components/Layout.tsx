@@ -1,5 +1,5 @@
-import type { JSX, MouseEvent, ReactNode } from "react";
-import { BookOpenCheck, BriefcaseBusiness, Home, UserRound } from "lucide-react";
+import { useState, type JSX, type MouseEvent, type ReactNode } from "react";
+import { BookOpenCheck, BriefcaseBusiness, Home, Menu, UserRound, X } from "lucide-react";
 import { Wordmark } from "./Brand";
 
 type NavItem = {
@@ -22,8 +22,11 @@ type SiteLayoutProps = {
 };
 
 export function SiteLayout({ activePath, onNavigate, children }: SiteLayoutProps): JSX.Element {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const handleClick = (event: MouseEvent<HTMLAnchorElement>, path: string) => {
     event.preventDefault();
+    setMobileMenuOpen(false);
     onNavigate(path);
   };
 
@@ -40,7 +43,7 @@ export function SiteLayout({ activePath, onNavigate, children }: SiteLayoutProps
             <Wordmark variant="dark" />
           </a>
 
-          <nav className="topbar__nav" aria-label="Navegação">
+          <nav className="topbar__nav" aria-label="Navegação principal">
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
@@ -53,7 +56,57 @@ export function SiteLayout({ activePath, onNavigate, children }: SiteLayoutProps
               </a>
             ))}
           </nav>
+
+          <button
+            className="iconBtn topbar__showOnMobile"
+            type="button"
+            onClick={() => setMobileMenuOpen((open) => !open)}
+            aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+          >
+            {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
         </div>
+
+        {mobileMenuOpen && (
+          <>
+            <button
+              className="mobileOverlay"
+              type="button"
+              aria-label="Fechar menu"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+            <div className="mobileSheet" id="mobile-menu" role="dialog" aria-modal="true">
+              <div className="mobileSheet__top">
+                <Wordmark variant="light" />
+                <button
+                  className="iconBtn"
+                  type="button"
+                  aria-label="Fechar menu"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <X size={18} />
+                </button>
+              </div>
+              <div className="mobileSheet__nav">
+                {NAV_ITEMS.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className={`mobileLink ${activePath === item.href ? "isActive" : ""}`}
+                    onClick={(event) => handleClick(event, item.href)}
+                  >
+                    <span className="mobileLink__left">
+                      {item.icon}
+                      {item.label}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
       </header>
 
       {children}

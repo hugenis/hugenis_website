@@ -37,16 +37,8 @@ body {
     "Apple Color Emoji",
     "Segoe UI Emoji";
   background:
-    radial-gradient(
-      900px 440px at 0% 0%,
-      rgba(44, 198, 184, 0.09),
-      transparent 62%
-    ),
-    radial-gradient(
-      900px 440px at 100% 0%,
-      rgba(14, 42, 58, 0.08),
-      transparent 62%
-    ),
+    radial-gradient(900px 440px at 0% 0%, rgba(44, 198, 184, 0.09), transparent 62%),
+    radial-gradient(900px 440px at 100% 0%, rgba(14, 42, 58, 0.08), transparent 62%),
     var(--paper);
   color: var(--graphite);
 }
@@ -120,6 +112,7 @@ a {
 
 .topbar__nav::-webkit-scrollbar {
   display: none;
+  gap: 10px;
 }
 
 .navLink {
@@ -148,11 +141,7 @@ a {
 }
 
 .navLink.isActive {
-  background: linear-gradient(
-    135deg,
-    rgba(44, 198, 184, 0.28),
-    rgba(44, 198, 184, 0.16)
-  );
+  background: linear-gradient(135deg, rgba(44, 198, 184, 0.28), rgba(44, 198, 184, 0.16));
   border-color: rgba(44, 198, 184, 0.45);
   color: rgba(255, 255, 255, 0.98);
 }
@@ -173,36 +162,24 @@ a {
 
 @media (max-width: 919px) {
   .topbar__inner {
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
   }
 
-  .topbar__logo {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .topbar__nav {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .navLink {
-    font-size: 13px;
-    padding: 8px 10px;
-    white-space: nowrap;
+  .topbar__showOnMobile {
+    display: inline-flex;
   }
 }
 
 @media (min-width: 920px) {
   .topbar__nav {
+    display: flex;
     gap: 18px;
-    overflow: visible;
   }
+
   .topbar__hideOnMobile {
     display: inline-flex;
   }
+
   .topbar__showOnMobile {
     display: none;
   }
@@ -292,11 +269,7 @@ a {
 }
 
 .btn--ghost {
-  background: linear-gradient(
-    160deg,
-    rgba(255, 255, 255, 0.9),
-    rgba(233, 242, 251, 0.74)
-  );
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(233, 242, 251, 0.74));
   color: #0f172a;
 }
 
@@ -356,7 +329,7 @@ a {
 
 .mobileLink {
   width: 100%;
-  border: 1px solid rgba(15, 23, 42, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 16px;
   padding: 12px 12px;
   display: flex;
@@ -364,7 +337,22 @@ a {
   justify-content: space-between;
   font-weight: 650;
   cursor: pointer;
-  background-color: #2b8080;
+  text-decoration: none;
+  color: rgba(245, 247, 250, 0.95);
+  background: rgba(255, 255, 255, 0.06);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.mobileLink__left {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobileLink:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(44, 198, 184, 0.45);
 }
 
 .mobileLink.isActive {
@@ -384,11 +372,7 @@ a {
 }
 
 .band--tinted {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.68),
-    rgba(233, 242, 251, 0.6)
-  );
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.68), rgba(233, 242, 251, 0.6));
   border-top: 1px solid rgba(15, 23, 42, 0.06);
   border-bottom: 1px solid rgba(15, 23, 42, 0.06);
 }
@@ -554,11 +538,7 @@ a {
 }
 
 .miniCard {
-  background: linear-gradient(
-    160deg,
-    rgba(255, 255, 255, 0.88),
-    rgba(233, 242, 251, 0.72)
-  );
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.88), rgba(233, 242, 251, 0.72));
   border: 1px solid rgba(15, 23, 42, 0.12);
   border-radius: var(--radius);
   padding: 14px;
@@ -715,11 +695,7 @@ a {
 }
 
 .card {
-  background: linear-gradient(
-    160deg,
-    rgba(255, 255, 255, 0.9),
-    rgba(233, 242, 251, 0.74)
-  );
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(233, 242, 251, 0.74));
   border: 1px solid rgba(15, 23, 42, 0.1);
   border-radius: var(--radius);
   padding: 16px;
@@ -742,11 +718,7 @@ a {
   transform: translateY(-5px) scale(1.01);
   box-shadow: var(--shadow-soft);
   border-color: rgba(44, 198, 184, 0.45);
-  background: linear-gradient(
-    160deg,
-    rgba(255, 255, 255, 0.95),
-    rgba(222, 246, 242, 0.86)
-  );
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(222, 246, 242, 0.86));
 }
 
 .card__head {
@@ -815,11 +787,7 @@ a {
   padding: 16px;
   border-radius: var(--radius);
   border: 1px solid rgba(15, 23, 42, 0.12);
-  background: linear-gradient(
-    160deg,
-    rgba(255, 255, 255, 0.9),
-    rgba(233, 242, 251, 0.74)
-  );
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(233, 242, 251, 0.74));
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
 }
 
@@ -851,11 +819,7 @@ a {
   margin-top: 18px;
   border-radius: 22px;
   border: 1px solid rgba(15, 23, 42, 0.12);
-  background: linear-gradient(
-    160deg,
-    rgba(255, 255, 255, 0.9),
-    rgba(233, 242, 251, 0.74)
-  );
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(233, 242, 251, 0.74));
   padding: 16px;
 }
 
@@ -939,11 +903,7 @@ a {
   align-items: center;
   border-radius: var(--radius);
   border: 1px solid rgba(15, 23, 42, 0.12);
-  background: linear-gradient(
-    160deg,
-    rgba(255, 255, 255, 0.9),
-    rgba(233, 242, 251, 0.74)
-  );
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(233, 242, 251, 0.74));
   padding: 14px;
   text-decoration: none;
 }
@@ -1125,6 +1085,7 @@ a {
     transition: none;
   }
 }
+
 
 .liveFadeIn {
   animation: liveFadeIn 0.45s ease both;
