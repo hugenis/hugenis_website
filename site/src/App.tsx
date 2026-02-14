@@ -13,6 +13,18 @@ function getPathname(): string {
   return cleanPath === "" ? "/" : cleanPath;
 }
 
+
+function scrollPageToTop(behavior: ScrollBehavior = "auto"): void {
+  const page = document.querySelector(".page");
+
+  if (page instanceof HTMLElement) {
+    page.scrollTo({ top: 0, behavior });
+    return;
+  }
+
+  window.scrollTo({ top: 0, behavior });
+}
+
 function resolvePage(pathname: string): JSX.Element {
   switch (pathname) {
     case "/o-que-fazemos":
@@ -40,10 +52,14 @@ function App(): JSX.Element {
     if (nextPath === pathname) return;
     window.history.pushState({}, "", nextPath);
     setPathname(nextPath);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollPageToTop("auto");
   };
 
   const content = useMemo(() => resolvePage(pathname), [pathname]);
+
+  useEffect(() => {
+    scrollPageToTop("auto");
+  }, [pathname]);
 
   return (
     <SiteLayout activePath={pathname} onNavigate={navigate}>
