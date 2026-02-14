@@ -103,6 +103,14 @@ a {
 }
 
 .topbar__nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+}
+
+.topbar__nav::-webkit-scrollbar {
   display: none;
   gap: 10px;
 }
@@ -204,6 +212,7 @@ a {
   font-weight: 720;
   letter-spacing: -0.02em;
   font-size: 18px;
+  color: #fff;
 }
 
 .brand--dark {
