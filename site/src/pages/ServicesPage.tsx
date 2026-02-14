@@ -62,8 +62,7 @@ export default function ServicesPage(): JSX.Element {
           <motion.div
             className="sectionHead"
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
+            animate="show"
             variants={stagger}
           >
             <motion.div className="kicker" variants={reveal}>
@@ -81,8 +80,7 @@ export default function ServicesPage(): JSX.Element {
           <motion.div
             className="grid"
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
+            animate="show"
             variants={stagger}
           >
             <Feature
@@ -130,8 +128,7 @@ export default function ServicesPage(): JSX.Element {
           <motion.div
             className="sectionHead sectionHead--center"
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
+            animate="show"
             variants={stagger}
           >
             <motion.div className="kicker" variants={reveal}>
@@ -145,8 +142,7 @@ export default function ServicesPage(): JSX.Element {
           <motion.div
             className="steps steps--cards"
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
+            animate="show"
             variants={stagger}
           >
             {[

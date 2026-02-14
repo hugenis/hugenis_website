@@ -30,8 +30,7 @@ export default function AboutPage(): JSX.Element {
           <motion.div
             className="sectionHead sectionHead--center"
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
+            animate="show"
             variants={stagger}
           >
             <motion.div className="kicker" variants={reveal}>
@@ -50,8 +49,7 @@ export default function AboutPage(): JSX.Element {
           <motion.div
             className="grid grid--3"
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
+            animate="show"
             variants={stagger}
           >
             {[
@@ -82,8 +80,7 @@ export default function AboutPage(): JSX.Element {
           <motion.div
             className="sectionHead"
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
+            animate="show"
             variants={stagger}
           >
             <motion.div className="kicker" variants={reveal}>
@@ -103,8 +100,7 @@ export default function AboutPage(): JSX.Element {
           <motion.div
             className="grid grid--3"
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
+            animate="show"
             variants={stagger}
           >
             {[
@@ -135,8 +131,7 @@ export default function AboutPage(): JSX.Element {
           <motion.div
             className="sectionHead sectionHead--center"
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
+            animate="show"
             variants={stagger}
           >
             <motion.div className="kicker" variants={reveal}>
@@ -147,8 +142,7 @@ export default function AboutPage(): JSX.Element {
           <motion.div
             className="card"
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
+            animate="show"
             variants={reveal}
             style={{ display: "grid", gap: 20, alignItems: "center", gridTemplateColumns: "120px 1fr" }}
           >

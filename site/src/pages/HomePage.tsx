@@ -28,8 +28,7 @@ export default function HomePage(): JSX.Element {
             <motion.div
               className="hero__left"
               initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-80px" }}
+              animate="show"
               variants={stagger}
             >
               <motion.div className="chips" variants={reveal}>
@@ -72,8 +71,7 @@ export default function HomePage(): JSX.Element {
           <motion.div
             className="sectionHead sectionHead--center"
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
+            animate="show"
             variants={stagger}
           >
             <motion.div className="kicker" variants={reveal}>
@@ -91,8 +89,7 @@ export default function HomePage(): JSX.Element {
           <motion.div
             className="grid grid--3"
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
+            animate="show"
             variants={stagger}
           >
             {[

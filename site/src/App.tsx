@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState, type JSX } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import "./App.css";
 import "./pages/hugenisHome.css";
 import { SiteLayout } from "./components/Layout";
@@ -12,7 +12,6 @@ function getPathname(): string {
   const cleanPath = window.location.pathname.replace(/\/$/, "");
   return cleanPath === "" ? "/" : cleanPath;
 }
-
 
 function scrollPageToTop(behavior: ScrollBehavior = "auto"): void {
   const page = document.querySelector(".page");
@@ -52,7 +51,6 @@ function App(): JSX.Element {
     if (nextPath === pathname) return;
     window.history.pushState({}, "", nextPath);
     setPathname(nextPath);
-    scrollPageToTop("auto");
   };
 
   const content = useMemo(() => resolvePage(pathname), [pathname]);
@@ -63,17 +61,14 @@ function App(): JSX.Element {
 
   return (
     <SiteLayout activePath={pathname} onNavigate={navigate}>
-      <AnimatePresence mode="wait">
-        <motion.main
-          key={pathname}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
-        >
-          {content}
-        </motion.main>
-      </AnimatePresence>
+      <motion.main
+        key={pathname}
+        initial={{ opacity: 0.98 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.12, ease: "linear" }}
+      >
+        {content}
+      </motion.main>
     </SiteLayout>
   );
 }
