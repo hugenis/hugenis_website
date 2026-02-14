@@ -83,8 +83,8 @@ function LogoMark(): JSX.Element {
 
 type WordmarkProps = { variant?: BrandVariant };
 
-function Wordmark({}: WordmarkProps): JSX.Element {
-  const isDark = false;
+function Wordmark({ variant = "light" }: WordmarkProps): JSX.Element {
+  const isDark = variant === "dark";
   return (
     <div className={`brand ${isDark ? "brand--dark" : "brand--light"}`}>
       <div className={`brand__mark ${isDark ? "mark--dark" : "mark--light"}`}>
@@ -384,7 +384,7 @@ export default function HugenisHome(): JSX.Element {
   const navItems: NavItem[] = [
     { id: "o-que-fazemos", label: "O que fazemos" },
     { id: "como-trabalhamos", label: "Como trabalhamos" },
-    { id: "para-quem", label: "Para quem" },
+    { id: "sobre-nos", label: "Sobre nós" },
     // { id: "contato", label: "Contato" },
   ];
   const activeId = useActiveSection(navItems.map((n) => n.id));
@@ -471,19 +471,19 @@ export default function HugenisHome(): JSX.Element {
             >
               <motion.div className="chips" variants={reveal}>
                 <span className="chip">Software • Dados • IA</span>
-                <span className="chip">Critério técnico</span>
+                <span className="chip">Excelência técnica</span>
                 <span className="chip">Visão de longo prazo</span>
               </motion.div>
 
               <motion.h1 className="hero__title" variants={reveal}>
-                Inteligência aplicada{" "}
-                <span className="accent">com critério</span>.
+                Engenharia e inovação{" "}
+                <span className="accent">que geram confiança</span>.
               </motion.h1>
 
               <motion.p className="hero__lead" variants={reveal}>
-                A Hugenis constrói software e soluções baseadas em dados e IA
-                com engenharia sólida, clareza e responsabilidade. Sem modismos.
-                Sem improviso.
+                A Hugenis desenvolve software e soluções com dados e IA de
+                forma estruturada, responsável e orientada a resultados reais.
+                Com planejamento, método e compromisso com qualidade.
               </motion.p>
 
               <motion.div className="hero__actions" variants={reveal}>
@@ -537,15 +537,15 @@ export default function HugenisHome(): JSX.Element {
 
               <motion.div className="heroPanel__stats" variants={reveal}>
                 <div className="stat">
-                  <div className="stat__v">+clareza</div>
+                  <div className="stat__v">+confiança</div>
                   <div className="stat__l">para decisões técnicas</div>
                 </div>
                 <div className="stat">
-                  <div className="stat__v">+base</div>
+                  <div className="stat__v">+estrutura</div>
                   <div className="stat__l">para sistemas escaláveis</div>
                 </div>
                 <div className="stat">
-                  <div className="stat__v">+critério</div>
+                  <div className="stat__v">+valor</div>
                   <div className="stat__l">para IA com propósito</div>
                 </div>
               </motion.div>
@@ -553,8 +553,8 @@ export default function HugenisHome(): JSX.Element {
               <motion.div className="heroPanel__notes" variants={reveal}>
                 <div className="note">
                   <div className="note__t">
-                    <Workflow size={16} color={COLORS.accent} /> Processo claro,
-                    sem ruído
+                    <Workflow size={16} color={COLORS.accent} /> Método claro,
+                    com foco
                   </div>
                   <div className="note__d">
                     Diagnóstico → arquitetura → execução → observabilidade.
@@ -566,7 +566,8 @@ export default function HugenisHome(): JSX.Element {
                     Responsabilidade técnica
                   </div>
                   <div className="note__d">
-                    Sem promessas mágicas. Só o que é defensável e sustentável.
+                    Trabalho técnico consistente, com escolhas sustentáveis e
+                    transparência em cada etapa.
                   </div>
                 </div>
               </motion.div>
@@ -595,7 +596,7 @@ export default function HugenisHome(): JSX.Element {
               O que fazemos
             </motion.div>
             <motion.h2 className="h2" variants={reveal}>
-              Tecnologia com profundidade, do software à inteligência.
+              Tecnologia com profundidade, do software aos dados e à IA.
             </motion.h2>
             <motion.p className="p" variants={reveal}>
               Construímos e evoluímos sistemas, automatizamos processos e
@@ -642,7 +643,7 @@ export default function HugenisHome(): JSX.Element {
             />
             <Feature
               icon={Database}
-              title="Dados & inteligência"
+              title="Dados & estratégia"
               desc="Pipeline, qualidade e análises que viram decisão — não só dashboard."
               bullets={[
                 "Modelagem e ETL",
@@ -663,7 +664,7 @@ export default function HugenisHome(): JSX.Element {
             <Feature
               icon={ShieldCheck}
               title="Consultoria técnica"
-              desc="Ajudamos decisões difíceis com critério: stack, riscos, prazos e trade-offs."
+              desc="Apoiamos decisões técnicas com análise cuidadosa: stack, riscos, prazos e trade-offs."
               bullets={["Avaliação técnica", "Plano de ação", "Acompanhamento"]}
             />
           </motion.div>
@@ -684,11 +685,11 @@ export default function HugenisHome(): JSX.Element {
               Como trabalhamos
             </motion.div>
             <motion.h2 className="h2" variants={reveal}>
-              Processo claro. Entrega defensável.
+              Processo claro. Entrega consistente.
             </motion.h2>
             <motion.p className="p" variants={reveal}>
-              Sem ruído e sem promessa vazia. Base sólida, redução de risco e
-              previsibilidade.
+              Comunicação objetiva, execução responsável e evolução contínua
+              para reduzir riscos e aumentar previsibilidade.
             </motion.p>
           </motion.div>
 
@@ -744,17 +745,17 @@ export default function HugenisHome(): JSX.Element {
               <Sparkles size={18} color={COLORS.accent} /> Princípios Hugenis
             </motion.div>
             <motion.div className="principles__chips" variants={reveal}>
-              <span>Sem modismo</span>
-              <span>Sem ruído</span>
-              <span>Entrega defensável</span>
+              <span>Visão prática</span>
+              <span>Comunicação clara</span>
+              <span>Entrega consistente</span>
               <span>Qualidade & simplicidade</span>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* WHO */}
-      <section id="para-quem" className="band band--tinted">
+      {/* ABOUT */}
+      <section id="sobre-nos" className="band band--tinted">
         <div className="container">
           <motion.div
             className="sectionHead sectionHead--center"
@@ -764,14 +765,16 @@ export default function HugenisHome(): JSX.Element {
             variants={stagger}
           >
             <motion.div className="kicker" variants={reveal}>
-              Para quem
+              Sobre nós
             </motion.div>
             <motion.h2 className="h2" variants={reveal}>
-              Para quem precisa decidir melhor — e executar com base sólida.
+              Construímos tecnologia com propósito, coragem e consistência.
             </motion.h2>
             <motion.p className="p" variants={reveal}>
-              Cenários onde o custo do erro é alto e a qualidade precisa ser
-              consistente.
+              Acreditamos que grandes resultados nascem quando visão e execução
+              caminham juntas. Na Hugenis, cada projeto é uma oportunidade de
+              transformar complexidade em clareza, incerteza em estratégia e
+              potencial em impacto real.
             </motion.p>
           </motion.div>
 
@@ -784,16 +787,16 @@ export default function HugenisHome(): JSX.Element {
           >
             {[
               {
-                t: "Times de produto",
-                d: "Evolução de sistemas e integração de IA com previsibilidade.",
+                t: "Nosso compromisso",
+                d: "Entregar soluções úteis, elegantes e sustentáveis, com qualidade técnica em cada detalhe.",
               },
               {
-                t: "Operação & negócios",
-                d: "Automação, dados confiáveis e redução de retrabalho.",
+                t: "Nossa motivação",
+                d: "Apoiar pessoas e empresas em seu crescimento com tecnologia confiável, boas decisões e evolução contínua.",
               },
               {
-                t: "Liderança técnica",
-                d: "Diagnóstico, arquitetura e apoio em decisões críticas.",
+                t: "Nossa visão",
+                d: "Criar produtos e sistemas que gerem valor de longo prazo, sem atalhos e sem promessas vazias.",
               },
             ].map((c) => (
               <motion.div
@@ -806,26 +809,23 @@ export default function HugenisHome(): JSX.Element {
               </motion.div>
             ))}
           </motion.div>
-          {/* 
+
           <motion.div
-            className="ctaBar ctaBar--lift"
+            className="principles"
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
-            variants={reveal}
+            variants={stagger}
           >
-            <div>
-              <b>Quer validar um caminho técnico antes de investir pesado?</b>
-              <p>A gente faz o primeiro diagnóstico e devolve com clareza.</p>
-            </div>
-            <button
-              className="btn btn--primary"
-              type="button"
-              onClick={() => go("contato")}
-            >
-              Solicitar diagnóstico <ArrowRight size={16} />
-            </button>
-          </motion.div> */}
+            <motion.p className="p" variants={reveal}>
+              O fundador da Hugenis, Henrique Guilherme, constrói sua trajetória
+              unindo engenharia de software, dados e inteligência artificial para
+              resolver problemas reais com profundidade técnica e visão de
+              negócio. Seu trabalho é guiado por uma crença simples: tecnologia
+              só faz sentido quando melhora decisões, acelera resultados e cria
+              futuro com responsabilidade. — Sobre o fundador.
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
@@ -932,7 +932,7 @@ export default function HugenisHome(): JSX.Element {
             <span>Arquitetura</span>
           </div>
           <div className="footer__right">
-            Inteligência aplicada com critério.
+            Tecnologia bem aplicada, com responsabilidade.
           </div>
         </div>
       </footer>
