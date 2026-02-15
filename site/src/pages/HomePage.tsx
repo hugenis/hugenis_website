@@ -25,7 +25,12 @@ export default function HomePage(): JSX.Element {
       <section className="band band--hero">
         <div className="container">
           <div className="hero hero--split">
-            <motion.div className="hero__left" initial="hidden" animate="show" variants={stagger}>
+            <motion.div
+              className="hero__left"
+              initial="hidden"
+              animate="show"
+              variants={stagger}
+            >
               <motion.div className="chips" variants={reveal}>
                 <span className="chip">B2B para empresas médias</span>
                 <span className="chip">Arquitetura estratégica digital</span>
@@ -33,12 +38,14 @@ export default function HomePage(): JSX.Element {
               </motion.div>
 
               <motion.h1 className="hero__title" variants={reveal}>
-                Hugenis - Empresa de arquitetura estratégica digital para empresas em crescimento
+                Hugenis - Especialista em arquitetura estratégica digital para
+                empresas em crescimento
               </motion.h1>
 
               <motion.p className="hero__lead" variants={reveal}>
-                Arquitetamos soluções digitais com visão, estrutura e inteligência aplicada para
-                transformar tecnologia dispersa em base estratégica de crescimento.
+                Arquitetamos soluções digitais com visão, estrutura e
+                inteligência aplicada para transformar tecnologia dispersa em
+                base estratégica de crescimento.
               </motion.p>
 
               <motion.div className="hero__actions" variants={reveal}>
@@ -53,28 +60,48 @@ export default function HomePage(): JSX.Element {
               <motion.div className="miniCards" variants={reveal}>
                 <div className="miniCard">
                   <div className="miniCard__t">Missão</div>
-                  <div className="miniCard__d">Projetar e construir soluções digitais estruturadas para crescimento sustentável.</div>
+                  <div className="miniCard__d">
+                    Projetar e construir soluções digitais estruturadas para
+                    crescimento sustentável.
+                  </div>
                 </div>
                 <div className="miniCard">
                   <div className="miniCard__t">Visão</div>
-                  <div className="miniCard__d">Ser referência em arquitetura e estruturação digital com base sólida.</div>
+                  <div className="miniCard__d">
+                    Ser referência em arquitetura e estruturação digital com
+                    base sólida.
+                  </div>
                 </div>
                 <div className="miniCard">
                   <div className="miniCard__t">Valores</div>
-                  <div className="miniCard__d">Estrutura, propósito, clareza estratégica, evolução contínua e parceria duradoura.</div>
+                  <div className="miniCard__d">
+                    Estrutura, propósito, clareza estratégica, evolução contínua
+                    e parceria duradoura.
+                  </div>
                 </div>
               </motion.div>
             </motion.div>
 
-            <motion.aside className="heroPanel" initial="hidden" animate="show" variants={reveal}>
+            <motion.aside
+              className="heroPanel"
+              initial="hidden"
+              animate="show"
+              variants={reveal}
+            >
               <div className="heroPanel__glow" />
-              <img className="featureImage" src="/logo.jpg" alt="Composição visual da marca Hugenis" loading="lazy" />
+              <img
+                className="featureImage"
+                src="/logo.jpg"
+                alt="Composição visual da marca Hugenis"
+                loading="lazy"
+              />
               <div className="heroPanel__notes">
                 <div className="note">
                   <div className="note__t">Proposta de valor</div>
                   <div className="note__d">
-                    Estruturamos, modernizamos e direcionamos a evolução tecnológica de empresas
-                    médias com execução própria e arquitetura estratégica.
+                    Estruturamos, modernizamos e direcionamos a evolução
+                    tecnológica de empresas médias com execução própria e
+                    arquitetura estratégica.
                   </div>
                 </div>
               </div>
@@ -85,7 +112,12 @@ export default function HomePage(): JSX.Element {
 
       <section className="band band--tinted">
         <div className="container">
-          <motion.div className="sectionHead sectionHead--center" initial="hidden" animate="show" variants={stagger}>
+          <motion.div
+            className="sectionHead sectionHead--center"
+            initial="hidden"
+            animate="show"
+            variants={stagger}
+          >
             <motion.div className="kicker" variants={reveal}>
               <Sparkles size={14} /> Posicionamento de mercado
             </motion.div>
@@ -93,12 +125,17 @@ export default function HomePage(): JSX.Element {
               Consultoria técnica estratégica com execução própria.
             </motion.h2>
             <motion.p className="p" variants={reveal}>
-              Atuamos no mercado B2B com foco em empresas médias que precisam organizar,
-              modernizar e escalar sua tecnologia com segurança.
+              Atuamos no mercado B2B com foco em empresas médias que precisam
+              organizar, modernizar e escalar sua tecnologia com segurança.
             </motion.p>
           </motion.div>
 
-          <motion.div className="grid grid--3" initial="hidden" animate="show" variants={stagger}>
+          <motion.div
+            className="grid grid--3"
+            initial="hidden"
+            animate="show"
+            variants={stagger}
+          >
             {[
               {
                 t: "Não somos",
@@ -113,7 +150,11 @@ export default function HomePage(): JSX.Element {
                 d: "Arquitetura antes do desenvolvimento para evoluir com segurança e consistência.",
               },
             ].map((item) => (
-              <motion.div className="card card--hover card--center" key={item.t} variants={reveal}>
+              <motion.div
+                className="card card--hover card--center"
+                key={item.t}
+                variants={reveal}
+              >
                 <div className="card__title">{item.t}</div>
                 <p className="card__desc">{item.d}</p>
               </motion.div>
