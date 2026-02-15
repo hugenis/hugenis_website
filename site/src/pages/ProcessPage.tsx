@@ -1,10 +1,6 @@
 import type { JSX } from "react";
 import { motion } from "framer-motion";
-import { Gauge, GitBranch, Sparkles } from "lucide-react";
-
-const COLORS = {
-  accent: "#2CC6B8",
-};
+import { Gauge, GitBranch } from "lucide-react";
 
 const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
