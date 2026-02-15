@@ -24,86 +24,93 @@ export default function HomePage(): JSX.Element {
     <>
       <section className="band band--hero">
         <div className="container">
-          <div className="hero">
-            <motion.div
-              className="hero__left"
-              initial="hidden"
-              animate="show"
-              variants={stagger}
-            >
+          <div className="hero hero--split">
+            <motion.div className="hero__left" initial="hidden" animate="show" variants={stagger}>
               <motion.div className="chips" variants={reveal}>
-                <span className="chip">Software • Dados • IA</span>
-                <span className="chip">Excelência técnica</span>
-                <span className="chip">Visão de longo prazo</span>
+                <span className="chip">B2B para empresas médias</span>
+                <span className="chip">Arquitetura estratégica digital</span>
+                <span className="chip">Parceria de longo prazo</span>
               </motion.div>
 
               <motion.h1 className="hero__title" variants={reveal}>
-                Engenharia e inovação <span className="accent">que geram confiança</span>.
+                Hugenis - Empresa de arquitetura estratégica digital para empresas em crescimento
               </motion.h1>
 
               <motion.p className="hero__lead" variants={reveal}>
-                A Hugenis desenvolve software e soluções com dados e IA de forma estruturada,
-                responsável e orientada a resultados reais. Combinamos visão de produto,
-                arquitetura e execução para transformar boas ideias em sistemas sólidos.
+                Arquitetamos soluções digitais com visão, estrutura e inteligência aplicada para
+                transformar tecnologia dispersa em base estratégica de crescimento.
               </motion.p>
+
+              <motion.div className="hero__actions" variants={reveal}>
+                <a className="btn btn--primary" href="/sobre-nos">
+                  Começar um projeto
+                </a>
+                <a className="btn btn--ghost" href="/como-trabalhamos">
+                  Construir o próximo passo
+                </a>
+              </motion.div>
 
               <motion.div className="miniCards" variants={reveal}>
                 <div className="miniCard">
-                  <div className="miniCard__t">Diagnóstico</div>
-                  <div className="miniCard__d">Antes de propor, entendemos cenário e metas.</div>
+                  <div className="miniCard__t">Missão</div>
+                  <div className="miniCard__d">Projetar e construir soluções digitais estruturadas para crescimento sustentável.</div>
                 </div>
                 <div className="miniCard">
-                  <div className="miniCard__t">Arquitetura</div>
-                  <div className="miniCard__d">Base técnica para crescer com segurança.</div>
+                  <div className="miniCard__t">Visão</div>
+                  <div className="miniCard__d">Ser referência em arquitetura e estruturação digital com base sólida.</div>
                 </div>
                 <div className="miniCard">
-                  <div className="miniCard__t">Entrega</div>
-                  <div className="miniCard__d">Valor contínuo, qualidade e consistência.</div>
+                  <div className="miniCard__t">Valores</div>
+                  <div className="miniCard__d">Estrutura, propósito, clareza estratégica, evolução contínua e parceria duradoura.</div>
                 </div>
               </motion.div>
             </motion.div>
+
+            <motion.aside className="heroPanel" initial="hidden" animate="show" variants={reveal}>
+              <div className="heroPanel__glow" />
+              <img className="featureImage" src="/logo.jpg" alt="Composição visual da marca Hugenis" loading="lazy" />
+              <div className="heroPanel__notes">
+                <div className="note">
+                  <div className="note__t">Proposta de valor</div>
+                  <div className="note__d">
+                    Estruturamos, modernizamos e direcionamos a evolução tecnológica de empresas
+                    médias com execução própria e arquitetura estratégica.
+                  </div>
+                </div>
+              </div>
+            </motion.aside>
           </div>
         </div>
       </section>
 
       <section className="band band--tinted">
         <div className="container">
-          <motion.div
-            className="sectionHead sectionHead--center"
-            initial="hidden"
-            animate="show"
-            variants={stagger}
-          >
+          <motion.div className="sectionHead sectionHead--center" initial="hidden" animate="show" variants={stagger}>
             <motion.div className="kicker" variants={reveal}>
-              <Sparkles size={14} /> Nossa atuação
+              <Sparkles size={14} /> Posicionamento de mercado
             </motion.div>
             <motion.h2 className="h2" variants={reveal}>
-              Tecnologia aplicada com método, proximidade e impacto prático.
+              Consultoria técnica estratégica com execução própria.
             </motion.h2>
             <motion.p className="p" variants={reveal}>
-              Atuamos lado a lado com empresas e equipes para destravar eficiência,
-              confiabilidade e crescimento sustentável em produtos e operações.
+              Atuamos no mercado B2B com foco em empresas médias que precisam organizar,
+              modernizar e escalar sua tecnologia com segurança.
             </motion.p>
           </motion.div>
 
-          <motion.div
-            className="grid grid--3"
-            initial="hidden"
-            animate="show"
-            variants={stagger}
-          >
+          <motion.div className="grid grid--3" initial="hidden" animate="show" variants={stagger}>
             {[
               {
-                t: "Parceiros de evolução",
-                d: "Não entregamos apenas código: ajudamos a formar direção técnica e visão de produto.",
+                t: "Não somos",
+                d: "Fábrica de software, agência digital ou startup hype.",
               },
               {
-                t: "Execução com clareza",
-                d: "Escopo, prioridades e riscos ficam explícitos para a tomada de decisão ser segura.",
+                t: "Somos",
+                d: "Estruturadora de crescimento tecnológico com visão de longo prazo.",
               },
               {
-                t: "Resultados mensuráveis",
-                d: "Cada entrega nasce com objetivo definido e indicadores para acompanhar valor.",
+                t: "Foco",
+                d: "Arquitetura antes do desenvolvimento para evoluir com segurança e consistência.",
               },
             ].map((item) => (
               <motion.div className="card card--hover card--center" key={item.t} variants={reveal}>

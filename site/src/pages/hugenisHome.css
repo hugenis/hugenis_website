@@ -1156,3 +1156,57 @@ a {
     transform: translateY(0);
   }
 }
+
+.hero--split {
+  display: grid;
+  gap: 18px;
+}
+
+@media (min-width: 980px) {
+  .hero--split {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: start;
+  }
+}
+
+.featureImage {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+.graphicCard {
+  margin-top: 18px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: var(--radius);
+  padding: 14px;
+}
+
+.inlineChart {
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 12px;
+}
+
+.quoteCard {
+  display: grid;
+  gap: 16px;
+  align-items: center;
+}
+
+@media (min-width: 760px) {
+  .quoteCard {
+    grid-template-columns: 180px 1fr;
+  }
+}
+
+.quoteCard__image {
+  width: 100%;
+  max-width: 180px;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+}

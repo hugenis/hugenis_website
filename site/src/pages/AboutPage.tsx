@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 import { motion } from "framer-motion";
-import { GraduationCap, Target, UserRound } from "lucide-react";
+import { Mail, Target, UserRound } from "lucide-react";
 
 const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -19,51 +19,37 @@ const stagger = {
   show: { transition: { staggerChildren: 0.08 } },
 };
 
-const founderImageUrl =
-  "https://media.licdn.com/dms/image/v2/D4D03AQGsK1jXMDXXUA/profile-displayphoto-scale_200_200/B4DZxPkw8hKEAY-/0/1770861564897?e=1772668800&v=beta&t=xy74UVyb9ehj-xqo2xWB63mrdP9WjCpGelKZjsowXSU";
-
 export default function AboutPage(): JSX.Element {
   return (
     <>
       <section className="band band--tinted">
         <div className="container">
-          <motion.div
-            className="sectionHead sectionHead--center"
-            initial="hidden"
-            animate="show"
-            variants={stagger}
-          >
+          <motion.div className="sectionHead sectionHead--center" initial="hidden" animate="show" variants={stagger}>
             <motion.div className="kicker" variants={reveal}>
-              <Target size={14} /> Sobre nós
+              <Target size={14} /> Missão, visão e valores
             </motion.div>
             <motion.h2 className="h2" variants={reveal}>
-              Construímos tecnologia com propósito, coragem e consistência.
+              Fundamento estratégico para construir evolução tecnológica real.
             </motion.h2>
             <motion.p className="p" variants={reveal}>
-              Acreditamos que grandes resultados nascem quando visão e execução caminham juntas.
-              Na Hugenis, cada projeto é uma oportunidade de transformar complexidade em clareza,
-              incerteza em estratégia e potencial em impacto real.
+              A Hugenis é uma empresa de arquitetura estratégica digital para empresas em
+              crescimento. Nossa atuação une consultoria técnica estratégica e execução própria.
             </motion.p>
           </motion.div>
 
-          <motion.div
-            className="grid grid--3"
-            initial="hidden"
-            animate="show"
-            variants={stagger}
-          >
+          <motion.div className="grid grid--3" initial="hidden" animate="show" variants={stagger}>
             {[
               {
-                t: "Nosso compromisso",
-                d: "Entregar soluções úteis, elegantes e sustentáveis, com qualidade técnica em cada detalhe.",
+                t: "Missão",
+                d: "Projetar e construir soluções digitais estruturadas que direcionam crescimento tecnológico sustentável e estratégico.",
               },
               {
-                t: "Nossa motivação",
-                d: "Apoiar pessoas e empresas em seu crescimento com tecnologia confiável, boas decisões e evolução contínua.",
+                t: "Visão",
+                d: "Ser referência em arquitetura e estruturação digital para empresas que querem evoluir com base sólida.",
               },
               {
-                t: "Nossa visão",
-                d: "Criar produtos e sistemas que gerem valor de longo prazo, sem atalhos e com responsabilidade.",
+                t: "Valores",
+                d: "Estrutura antes da velocidade, tecnologia com propósito, clareza estratégica, evolução contínua e parceria de longo prazo.",
               },
             ].map((card) => (
               <motion.div className="card card--hover card--center" key={card.t} variants={reveal}>
@@ -77,91 +63,54 @@ export default function AboutPage(): JSX.Element {
 
       <section className="band">
         <div className="container">
-          <motion.div
-            className="sectionHead"
-            initial="hidden"
-            animate="show"
-            variants={stagger}
-          >
+          <motion.div className="sectionHead" initial="hidden" animate="show" variants={stagger}>
             <motion.div className="kicker" variants={reveal}>
-              <GraduationCap size={14} /> Formação de novos talentos
+              <UserRound size={14} /> Manifesto
             </motion.div>
             <motion.h2 className="h2" variants={reveal}>
-              Uma frente dedicada a preparar jovens para uma carreira técnica fora da média.
+              A Hugenis não desenvolve apenas sistemas.
             </motion.h2>
             <motion.p className="p" variants={reveal}>
-              Além dos projetos com empresas, a Hugenis também atua na capacitação de iniciantes
-              no desenvolvimento. Nossa proposta é formar profissionais com base sólida de lógica,
-              engenharia e pensamento crítico — especialmente em um mercado já saturado de perfis
-              medianos.
+              Estruturamos o caminho tecnológico que sustenta o crescimento da empresa, com
+              arquitetura bem pensada, execução disciplinada e evolução contínua.
             </motion.p>
           </motion.div>
 
-          <motion.div
-            className="grid grid--3"
-            initial="hidden"
-            animate="show"
-            variants={stagger}
-          >
-            {[
-              {
-                t: "IA com sabedoria",
-                d: "Ensinamos a usar inteligência artificial para aprender melhor, pesquisar e validar ideias — não para pensar no lugar do desenvolvedor.",
-              },
-              {
-                t: "Método de aprendizado",
-                d: "Aplicamos técnicas como prática deliberada, resolução guiada de problemas reais e revisão de código com feedback estruturado.",
-              },
-              {
-                t: "Formação diferenciada",
-                d: "O objetivo é formar profissionais autônomos, éticos e tecnicamente consistentes, capazes de gerar valor acima da média.",
-              },
-            ].map((item) => (
-              <motion.div className="card card--hover card--center" key={item.t} variants={reveal}>
-                <div className="card__title">{item.t}</div>
-                <p className="card__desc">{item.d}</p>
-              </motion.div>
-            ))}
+          <motion.div className="card quoteCard" initial="hidden" animate="show" variants={reveal}>
+            <img
+              src="/format-2.png"
+              alt="Composição visual da identidade Hugenis"
+              className="quoteCard__image"
+              loading="lazy"
+            />
+            <div>
+              <p className="p" style={{ marginTop: 0 }}>
+                O futuro não é um evento. É uma construção.
+                <br />
+                Nós não seguimos tendências.
+                <br />
+                Estruturamos caminhos.
+              </p>
+              <p className="card__desc" style={{ marginBottom: 0 }}>
+                Onde o futuro começa.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
 
       <section className="band band--tinted">
         <div className="container">
-          <motion.div
-            className="sectionHead sectionHead--center"
-            initial="hidden"
-            animate="show"
-            variants={stagger}
-          >
+          <motion.div className="sectionHead sectionHead--center" initial="hidden" animate="show" variants={stagger}>
             <motion.div className="kicker" variants={reveal}>
-              <UserRound size={14} /> Sobre o fundador
+              <Mail size={14} /> Contato
             </motion.div>
-          </motion.div>
-
-          <motion.div
-            className="card"
-            initial="hidden"
-            animate="show"
-            variants={reveal}
-            style={{ display: "grid", gap: 20, alignItems: "center", gridTemplateColumns: "120px 1fr" }}
-          >
-            <img
-              src={founderImageUrl}
-              alt="Henrique Guilherme, fundador da Hugenis"
-              width={120}
-              height={120}
-              style={{ borderRadius: 16, objectFit: "cover", border: "1px solid rgba(15, 23, 42, 0.12)" }}
-              loading="lazy"
-              referrerPolicy="no-referrer"
-            />
-            <p className="p" style={{ margin: 0 }}>
-              Henrique Guilherme conduz a Hugenis unindo engenharia de software, dados e
-              inteligência artificial para resolver desafios reais com profundidade técnica e visão
-              de negócio. Sua atuação valoriza clareza, responsabilidade e evolução contínua,
-              sempre com foco em construir soluções robustas e formar profissionais preparados para
-              o futuro.
-            </p>
+            <motion.h2 className="h2" variants={reveal}>
+              Vamos estruturar o próximo ciclo da sua evolução digital.
+            </motion.h2>
+            <motion.p className="p" variants={reveal}>
+              comercial@hugenis.com
+            </motion.p>
           </motion.div>
         </div>
       </section>

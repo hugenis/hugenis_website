@@ -59,65 +59,55 @@ export default function ServicesPage(): JSX.Element {
     <>
       <section className="band band--tinted">
         <div className="container">
-          <motion.div
-            className="sectionHead"
-            initial="hidden"
-            animate="show"
-            variants={stagger}
-          >
+          <motion.div className="sectionHead" initial="hidden" animate="show" variants={stagger}>
             <motion.div className="kicker" variants={reveal}>
-              <Layers size={14} /> O que fazemos
+              <Layers size={14} /> Proposta de valor
             </motion.div>
             <motion.h2 className="h2" variants={reveal}>
-              Tecnologia com profundidade, do software aos dados e à IA.
+              Arquitetura estratégica digital para empresas em crescimento.
             </motion.h2>
             <motion.p className="p" variants={reveal}>
-              Construímos e evoluímos sistemas, automatizamos processos e aplicamos dados/IA com
-              responsabilidade e foco em resultados concretos para o negócio.
+              Estruturamos, modernizamos e direcionamos a evolução tecnológica de empresas médias,
+              transformando tecnologia dispersa em arquitetura estratégica.
             </motion.p>
           </motion.div>
 
-          <motion.div
-            className="grid"
-            initial="hidden"
-            animate="show"
-            variants={stagger}
-          >
+          <motion.div className="grid" initial="hidden" animate="show" variants={stagger}>
             <Feature
-              icon={Code2}
-              title="Software sob medida"
-              desc="Soluções desenhadas para contexto, processo e meta de negócio."
-              bullets={["Arquitetura sólida", "Escalabilidade", "Manutenibilidade"]}
+              icon={Database}
+              title="Diagnóstico de maturidade digital"
+              desc="Mapeamos cenário técnico atual para orientar decisões de investimento e evolução."
+              bullets={["Mapa de maturidade", "Riscos e gargalos", "Prioridades práticas"]}
             />
             <Feature
               icon={Boxes}
-              title="Arquitetura & evolução"
-              desc="Refatoração estratégica, performance e confiabilidade para crescer com segurança."
-              bullets={["Diagnóstico de gargalos", "Plano evolutivo", "Observabilidade"]}
+              title="Arquitetura de sistemas"
+              desc="Estruturação de base técnica para crescimento sustentável e previsível."
+              bullets={["Arquitetura alvo", "Padrões de integração", "Escalabilidade"]}
+            />
+            <Feature
+              icon={Code2}
+              title="Desenvolvimento web sob medida"
+              desc="Implementação orientada por escopo definido, entregáveis objetivos e valor de negócio."
+              bullets={["Produto sob medida", "Qualidade de código", "Manutenção simples"]}
             />
             <Feature
               icon={Workflow}
-              title="Automação de processos"
-              desc="Redução de tempo e erro operacional com automações rastreáveis."
-              bullets={["Mapeamento de fluxo", "Automação incremental", "Métricas de ganho"]}
-            />
-            <Feature
-              icon={Database}
-              title="Dados & estratégia"
-              desc="Pipeline, qualidade e análises que viram decisão — não só dashboard."
-              bullets={["Modelagem e ETL", "Indicadores úteis", "Governança leve"]}
+              title="Integração de sistemas"
+              desc="Conectamos plataformas e processos para reduzir silos e aumentar eficiência operacional."
+              bullets={["Integrações seguras", "Fluxos automatizados", "Rastreabilidade"]}
             />
             <Feature
               icon={Brain}
-              title="IA aplicada"
-              desc="Do experimento ao produto: IA/ML com validação, métricas e limites claros."
-              bullets={["Prova de valor", "Métricas e validação", "Integração com produto"]}
+              title="Aplicação estratégica de IA"
+              desc="IA aplicada com propósito e foco em ROI, conectada ao contexto real da empresa."
+              bullets={["Casos de uso viáveis", "Validação de impacto", "Medição de resultado"]}
             />
             <Feature
               icon={ShieldCheck}
-              title="Consultoria técnica"
-              desc="Apoiamos decisões técnicas com análise cuidadosa: stack, riscos, prazos e trade-offs."
-              bullets={["Avaliação técnica", "Plano de ação", "Acompanhamento"]}
+              title="Planejamento tecnológico 3-5 anos"
+              desc="Direcionamos a evolução técnica de médio e longo prazo com governança clara."
+              bullets={["Roadmap estratégico", "Marcos de evolução", "Sustentabilidade técnica"]}
             />
           </motion.div>
         </div>
@@ -125,47 +115,24 @@ export default function ServicesPage(): JSX.Element {
 
       <section className="band">
         <div className="container">
-          <motion.div
-            className="sectionHead sectionHead--center"
-            initial="hidden"
-            animate="show"
-            variants={stagger}
-          >
+          <motion.div className="sectionHead sectionHead--center" initial="hidden" animate="show" variants={stagger}>
             <motion.div className="kicker" variants={reveal}>
-              <ClipboardList size={14} /> Entregáveis
+              <ClipboardList size={14} /> Modelo de parceria
             </motion.div>
             <motion.h2 className="h2" variants={reveal}>
-              O que normalmente entregamos em cada frente.
+              Diagnóstico → Arquitetura → Desenvolvimento → Evolução.
             </motion.h2>
           </motion.div>
 
-          <motion.div
-            className="steps steps--cards"
-            initial="hidden"
-            animate="show"
-            variants={stagger}
-          >
+          <motion.div className="steps steps--cards" initial="hidden" animate="show" variants={stagger}>
             {[
-              {
-                n: "01",
-                t: "Direcionamento técnico",
-                d: "Diagnóstico, arquitetura alvo e priorização de etapas com clareza de investimento.",
-              },
-              {
-                n: "02",
-                t: "Plano de implementação",
-                d: "Roadmap prático com entregas incrementais, marcos de validação e critérios de qualidade.",
-              },
-              {
-                n: "03",
-                t: "Evolução assistida",
-                d: "Acompanhamento contínuo para manter estabilidade, performance e aderência ao objetivo.",
-              },
+              { n: "01", t: "Diagnóstico", d: "Entendimento técnico do cenário e definição de prioridades." },
+              { n: "02", t: "Arquitetura", d: "Estruturação de soluções com base sólida e visão de escala." },
+              { n: "03", t: "Desenvolvimento", d: "Execução própria com foco em entregáveis e qualidade de engenharia." },
+              { n: "04", t: "Evolução", d: "Parceria contínua para sustentar crescimento tecnológico com segurança." },
             ].map((step) => (
               <motion.div className="stepCard" variants={reveal} key={step.n}>
-                <div className="stepCard__badge" aria-hidden="true">
-                  {step.n}
-                </div>
+                <div className="stepCard__badge" aria-hidden="true">{step.n}</div>
                 <div className="stepCard__body">
                   <div className="stepCard__t">{step.t}</div>
                   <div className="stepCard__d">{step.d}</div>

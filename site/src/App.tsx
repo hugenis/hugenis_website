@@ -74,12 +74,7 @@ function App(): JSX.Element {
   return (
     <>
       {showSplash && (
-        <motion.div
-          className="splash"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
+        <motion.div className="splash" initial={{ opacity: 1 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
           <motion.img
             className="splash__logo"
             src="/format-1.png"
@@ -94,18 +89,13 @@ function App(): JSX.Element {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.45, delay: 0.2, ease: "easeOut" }}
           >
-            Hugenis · Soluções ágeis e confiáveis para o seu negócio
+            Hugenis - Empresa de arquitetura estratégica digital para empresas em crescimento
           </motion.p>
         </motion.div>
       )}
 
       <SiteLayout activePath={pathname} onNavigate={navigate}>
-        <motion.main
-          key={pathname}
-          initial={{ opacity: 0.98 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.12, ease: "linear" }}
-        >
+        <motion.main key={pathname} initial={{ opacity: 0.98 }} animate={{ opacity: 1 }} transition={{ duration: 0.12, ease: "linear" }}>
           {content}
         </motion.main>
       </SiteLayout>
