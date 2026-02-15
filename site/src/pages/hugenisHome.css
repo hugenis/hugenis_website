@@ -210,18 +210,24 @@ a {
 
 .brand__mark {
   width: 36px;
-  height: 36px;
+  height: 40px;
   display: grid;
   place-items: center;
-  border-radius: 14px;
+}
+
+.brand__markImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 7px rgba(10, 165, 213, 0.28));
 }
 
 .mark--dark {
-  background: rgba(14, 42, 58, 0.06);
+  background: transparent;
 }
 
 .mark--light {
-  background: rgba(255, 255, 255, 0.1);
+  background: transparent;
 }
 
 .brand__name {

@@ -39,6 +39,9 @@ function resolvePage(pathname: string): JSX.Element {
 
 function App(): JSX.Element {
   const [pathname, setPathname] = useState<string>(getPathname());
+  const [showSplash, setShowSplash] = useState<boolean>(() => {
+    return window.localStorage.getItem("hugenis:splash-seen") !== "true";
+  });
 
   useEffect(() => {
     const handlePopState = () => setPathname(getPathname());
@@ -59,17 +62,54 @@ function App(): JSX.Element {
     scrollPageToTop("auto");
   }, [pathname]);
 
+  useEffect(() => {
+    if (!showSplash) return;
+
+    window.localStorage.setItem("hugenis:splash-seen", "true");
+    const timer = window.setTimeout(() => setShowSplash(false), 2200);
+
+    return () => window.clearTimeout(timer);
+  }, [showSplash]);
+
   return (
-    <SiteLayout activePath={pathname} onNavigate={navigate}>
-      <motion.main
-        key={pathname}
-        initial={{ opacity: 0.98 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.12, ease: "linear" }}
-      >
-        {content}
-      </motion.main>
-    </SiteLayout>
+    <>
+      {showSplash && (
+        <motion.div
+          className="splash"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.img
+            className="splash__logo"
+            src="/format-1.png"
+            alt="Logotipo da Hugenis"
+            initial={{ scale: 0.92, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          />
+          <motion.p
+            className="splash__text"
+            initial={{ y: 8, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.45, delay: 0.2, ease: "easeOut" }}
+          >
+            Hugenis · Soluções ágeis e confiáveis para o seu negócio
+          </motion.p>
+        </motion.div>
+      )}
+
+      <SiteLayout activePath={pathname} onNavigate={navigate}>
+        <motion.main
+          key={pathname}
+          initial={{ opacity: 0.98 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.12, ease: "linear" }}
+        >
+          {content}
+        </motion.main>
+      </SiteLayout>
+    </>
   );
 }
 
