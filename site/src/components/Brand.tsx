@@ -3,7 +3,13 @@ import type { JSX } from "react";
 type BrandVariant = "dark" | "light";
 
 function LogoMark(): JSX.Element {
-  return <img className="brand__markImage" src="/format-1.png" alt="Logotipo da Hugenis" />;
+  return (
+    <img
+      className="brand__markImage"
+      src="/format-3.png"
+      alt="Logotipo da Hugenis"
+    />
+  );
 }
 
 type WordmarkProps = { variant?: BrandVariant };
