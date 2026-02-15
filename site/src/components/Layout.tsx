@@ -123,7 +123,7 @@ export function SiteLayout({ activePath, onNavigate, children }: SiteLayoutProps
             <span>IA</span>
             <span>Arquitetura</span>
           </div>
-          <div className="footer__right">Tecnologia bem aplicada, com responsabilidade.</div>
+          <div className="footer__right">Onde o futuro começa.</div>
         </div>
       </footer>
     </div>
