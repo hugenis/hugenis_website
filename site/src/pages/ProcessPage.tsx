@@ -206,23 +206,6 @@ export default function ProcessPage(): JSX.Element {
               </motion.div>
             ))}
           </motion.div>
-
-          <motion.div
-            className="principles"
-            initial="hidden"
-            animate="show"
-            variants={stagger}
-          >
-            <motion.div className="principles__t" variants={reveal}>
-              <Sparkles size={18} color={COLORS.accent} /> Frase de impacto
-            </motion.div>
-            <motion.div className="principles__chips" variants={reveal}>
-              <span>
-                Hugenis - Especialista em arquitetura estratégica digital para
-                empresas em crescimento
-              </span>
-            </motion.div>
-          </motion.div>
         </div>
       </section>
     </>

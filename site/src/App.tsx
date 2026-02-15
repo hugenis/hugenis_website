@@ -94,8 +94,7 @@ function App(): JSX.Element {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.45, delay: 0.2, ease: "easeOut" }}
           >
-            Hugenis - Especialista em arquitetura estratégica digital para
-            empresas em crescimento
+            Hugenis - Transformando Futuros Digitais
           </motion.p>
         </motion.div>
       )}

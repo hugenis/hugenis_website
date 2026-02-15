@@ -38,8 +38,7 @@ export default function HomePage(): JSX.Element {
               </motion.div>
 
               <motion.h1 className="hero__title" variants={reveal}>
-                Hugenis - Especialista em arquitetura estratégica digital para
-                empresas em crescimento
+                Transformando Futuros Digitais
               </motion.h1>
 
               <motion.p className="hero__lead" variants={reveal}>
