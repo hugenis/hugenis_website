@@ -32,7 +32,7 @@ export default function HomePage(): JSX.Element {
               variants={stagger}
             >
               <motion.div className="chips" variants={reveal}>
-                <span className="chip">B2B para empresas médias</span>
+                <span className="chip">B2B para empresas</span>
                 <span className="chip">Arquitetura estratégica digital</span>
                 <span className="chip">Parceria de longo prazo</span>
               </motion.div>
@@ -99,8 +99,8 @@ export default function HomePage(): JSX.Element {
                   <div className="note__t">Proposta de valor</div>
                   <div className="note__d">
                     Estruturamos, modernizamos e direcionamos a evolução
-                    tecnológica de empresas médias com execução própria e
-                    arquitetura estratégica.
+                    tecnológica de empresas com execução própria e arquitetura
+                    estratégica.
                   </div>
                 </div>
               </div>
@@ -124,7 +124,7 @@ export default function HomePage(): JSX.Element {
               Consultoria técnica estratégica com execução própria.
             </motion.h2>
             <motion.p className="p" variants={reveal}>
-              Atuamos no mercado B2B com foco em empresas médias que precisam
+              Atuamos no mercado B2B com foco em empresas que precisam
               organizar, modernizar e escalar sua tecnologia com segurança.
             </motion.p>
           </motion.div>

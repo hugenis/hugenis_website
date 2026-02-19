@@ -448,6 +448,7 @@ a {
 .sectionHead {
   max-width: 760px;
   margin-inline: auto;
+  margin-bottom: 2em;
 }
 
 .sectionHead--center {
@@ -1194,7 +1195,7 @@ a {
 
 .quoteCard {
   display: grid;
-  gap: 16px;
+  gap: 20px;
   align-items: center;
 }
 
@@ -1209,4 +1210,26 @@ a {
   max-width: 180px;
   border-radius: 14px;
   border: 1px solid rgba(15, 23, 42, 0.12);
+}
+
+.quoteCard__text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 500;
+  margin: 0 0 16px 0;
+}
+
+.quoteCard__signature {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0;
+  color: rgba(15, 23, 42, 0.8);
+}
+
+.quoteCard__signature span {
+  display: block;
+  font-weight: 400;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 4px;
 }

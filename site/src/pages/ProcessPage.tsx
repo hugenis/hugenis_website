@@ -62,13 +62,13 @@ export default function ProcessPage(): JSX.Element {
               },
               {
                 n: "03",
-                t: "Planejamento 3-5 anos",
-                d: "Definimos evolução técnica de médio e longo prazo, não apenas ações imediatas.",
+                t: "Planejamento de longo prazo",
+                d: "Tomamos decisões pensando na sustentabilidade técnica e estratégica do negócio.",
               },
               {
                 n: "04",
-                t: "Parceria contínua",
-                d: "Atuação permanente para manter coerência entre estratégia e operação tecnológica.",
+                t: "Evolução contínua",
+                d: "Acompanhamos a solução para garantir que ela continue gerando resultado.",
               },
             ].map((step) => (
               <motion.div className="stepCard" variants={reveal} key={step.n}>

@@ -24,7 +24,12 @@ export default function AboutPage(): JSX.Element {
     <>
       <section className="band band--tinted">
         <div className="container">
-          <motion.div className="sectionHead sectionHead--center" initial="hidden" animate="show" variants={stagger}>
+          <motion.div
+            className="sectionHead sectionHead--center"
+            initial="hidden"
+            animate="show"
+            variants={stagger}
+          >
             <motion.div className="kicker" variants={reveal}>
               <Target size={14} /> Missão, visão e valores
             </motion.div>
@@ -32,12 +37,18 @@ export default function AboutPage(): JSX.Element {
               Fundamento estratégico para construir evolução tecnológica real.
             </motion.h2>
             <motion.p className="p" variants={reveal}>
-              A Hugenis é uma empresa de arquitetura estratégica digital para empresas em
-              crescimento. Nossa atuação une consultoria técnica estratégica e execução própria.
+              A Hugenis é uma empresa de arquitetura estratégica digital para
+              empresas em crescimento. Nossa atuação une consultoria técnica
+              estratégica e execução própria.
             </motion.p>
           </motion.div>
 
-          <motion.div className="grid grid--3" initial="hidden" animate="show" variants={stagger}>
+          <motion.div
+            className="grid grid--3"
+            initial="hidden"
+            animate="show"
+            variants={stagger}
+          >
             {[
               {
                 t: "Missão",
@@ -52,7 +63,11 @@ export default function AboutPage(): JSX.Element {
                 d: "Estrutura antes da velocidade, tecnologia com propósito, clareza estratégica, evolução contínua e parceria de longo prazo.",
               },
             ].map((card) => (
-              <motion.div className="card card--hover card--center" key={card.t} variants={reveal}>
+              <motion.div
+                className="card card--hover card--center"
+                key={card.t}
+                variants={reveal}
+              >
                 <div className="card__title">{card.t}</div>
                 <p className="card__desc">{card.d}</p>
               </motion.div>
@@ -63,7 +78,12 @@ export default function AboutPage(): JSX.Element {
 
       <section className="band">
         <div className="container">
-          <motion.div className="sectionHead" initial="hidden" animate="show" variants={stagger}>
+          <motion.div
+            className="sectionHead"
+            initial="hidden"
+            animate="show"
+            variants={stagger}
+          >
             <motion.div className="kicker" variants={reveal}>
               <UserRound size={14} /> Manifesto
             </motion.div>
@@ -71,28 +91,42 @@ export default function AboutPage(): JSX.Element {
               A Hugenis não desenvolve apenas sistemas.
             </motion.h2>
             <motion.p className="p" variants={reveal}>
-              Estruturamos o caminho tecnológico que sustenta o crescimento da empresa, com
-              arquitetura bem pensada, execução disciplinada e evolução contínua.
+              Estruturamos o caminho tecnológico que sustenta o crescimento da
+              empresa, com arquitetura bem pensada, execução disciplinada e
+              evolução contínua.
             </motion.p>
           </motion.div>
 
-          <motion.div className="card quoteCard" initial="hidden" animate="show" variants={reveal}>
+          <motion.div
+            className="card quoteCard"
+            initial="hidden"
+            animate="show"
+            variants={reveal}
+          >
             <img
-              src="/format-2.png"
-              alt="Composição visual da identidade Hugenis"
+              src="/founder.png"
+              alt="Henrique Guilherme - Fundador da Hugenis"
               className="quoteCard__image"
               loading="lazy"
             />
-            <div>
-              <p className="p" style={{ marginTop: 0 }}>
-                O futuro não é um evento. É uma construção.
+            <div className="quoteCard__content">
+              <p className="quoteCard__text">
+                “Tentativa e erro fazem parte do processo.
                 <br />
-                Nós não seguimos tendências.
+                Não buscamos saltos heroicos, buscamos consistência, sendo 1%
+                melhores do que fomos ontem.
                 <br />
-                Estruturamos caminhos.
+                <br />
+                Porque, no fim,
+                <br />
+                o futuro não pertence aos que acertam de primeira —
+                <br />
+                pertence aos que persistem e avançam.”
               </p>
-              <p className="card__desc" style={{ marginBottom: 0 }}>
-                Onde o futuro começa.
+
+              <p className="quoteCard__signature">
+                — Henrique Guilherme
+                <span>Fundador da Hugenis</span>
               </p>
             </div>
           </motion.div>
@@ -101,7 +135,12 @@ export default function AboutPage(): JSX.Element {
 
       <section className="band band--tinted">
         <div className="container">
-          <motion.div className="sectionHead sectionHead--center" initial="hidden" animate="show" variants={stagger}>
+          <motion.div
+            className="sectionHead sectionHead--center"
+            initial="hidden"
+            animate="show"
+            variants={stagger}
+          >
             <motion.div className="kicker" variants={reveal}>
               <Mail size={14} /> Contato
             </motion.div>
