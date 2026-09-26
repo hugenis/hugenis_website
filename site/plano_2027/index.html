@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano de Ação Financeiro — Henrique Germano (Até Março/2027)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-card: #111827;
+            --bg-card-hover: #1f2937;
+            --border-color: #242f42;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-green: #10b981;
+            --accent-green-bg: rgba(16, 185, 129, 0.12);
+            --accent-blue: #3b82f6;
+            --accent-blue-bg: rgba(59, 130, 246, 0.12);
+            --accent-purple: #8b5cf6;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-red-bg: rgba(239, 68, 68, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            padding: 32px 20px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 28px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .badge-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            background: var(--accent-green-bg);
+            color: var(--accent-green);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .badge-live::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .kpi-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kpi-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+        }
+
+        .kpi-card.green::after { background: var(--accent-green); }
+        .kpi-card.blue::after { background: var(--accent-blue); }
+        .kpi-card.purple::after { background: var(--accent-purple); }
+        .kpi-card.orange::after { background: var(--accent-orange); }
+
+        .kpi-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .kpi-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .kpi-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .progress-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 32px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .progress-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .progress-percentage {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 10px;
+            background: #1f2937;
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
+            transition: width 0.3s ease;
+        }
+
+        .section-phase {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .phase-header {
+            padding: 18px 24px;
+            background: #151e2e;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .phase-header:hover {
+            background: #182335;
+        }
+
+        .phase-title-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .phase-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+        }
+
+        .tag-urgent { background: var(--accent-red-bg); color: var(--accent-red); border: 1px solid rgba(239,68,68,0.3); }
+        .tag-action { background: var(--accent-blue-bg); color: var(--accent-blue); border: 1px solid rgba(59,130,246,0.3); }
+        .tag-success { background: var(--accent-green-bg); color: var(--accent-green); border: 1px solid rgba(16,185,129,0.3); }
+
+        .phase-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .phase-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .phase-content {
+            padding: 16px 24px;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            transition: background 0.15s ease;
+        }
+
+        .task-item:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .task-item input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent-green);
+            cursor: pointer;
+        }
+
+        .task-body {
+            flex: 1;
+        }
+
+        .task-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #e5e7eb;
+            margin-bottom: 4px;
+            transition: color 0.15s ease;
+        }
+
+        .task-desc {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .task-item.completed .task-title {
+            text-decoration: line-through;
+            color: #6b7280;
+        }
+
+        .task-item.completed .task-desc {
+            color: #4b5563;
+        }
+
+        .task-amount-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: #1f2937;
+            color: #93c5fd;
+            margin-top: 4px;
+        }
+
+        .task-notes-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            margin-top: 4px;
+            margin-left: 6px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .btn-reset {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-reset:hover {
+            background: #1f2937;
+            color: #ef4444;
+            border-color: #ef4444;
+        }
+
+        .db-sync-card {
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .db-sync-info {
+            font-size: 0.85rem;
+            color: #d1fae5;
+        }
+
+        .db-sync-info strong {
+            color: #10b981;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="badge-live">Banco BDFINANCE com 10 Parcelas do Estorno Nubank</div>
+            <h1>Plano de Ação Financeiro — Rota da Solvência</h1>
+            <p class="subtitle">Henrique Germano | Visão Executiva e Checklist Interativo até Março de 2027</p>
+        </header>
+
+        <div class="db-sync-card">
+            <div class="db-sync-info">
+                ✓ <strong>Novo Estorno Nubank Sincronizado:</strong> Todas as 10 parcelas de R$ 433,00 (do dia 10/11/2026 a 10/08/2027) foram inseridas no banco de dados. Dezembro permanece no azul (+R$ 154,31) e o primeiro trimestre de 2027 mantém superávits consistentes!
+            </div>
+        </div>
+
+        <div class="db-sync-card" style="background: rgba(59, 130, 246, 0.05); border-color: rgba(59, 130, 246, 0.25); margin-bottom: 24px;">
+            <div class="db-sync-info" style="color: #bfdbfe;">
+                💡 <strong>Regra Operacional do Google AI Ultra (Pós-Utilização):</strong> A cobrança é lançada no cartão sempre após o fechamento da fatura. Logo, o mês em que você paga quita o período que você <em>já utilizou</em>. Em Dezembro, a assinatura fica pausada (R$ 0 de cobrança no cartão) e o estorno de R$ 800 da Afixcode entra limpo no caixa referente ao ciclo de trabalho já concluído!
+            </div>
+        </div>
+
+        <div class="kpi-grid">
+            <div class="kpi-card green">
+                <div class="kpi-label">Dezembro (No Azul!)</div>
+                <div class="kpi-value">+R$ 154,31</div>
+                <div class="kpi-desc">Com Estorno Nubank e Google pausado</div>
+            </div>
+            <div class="kpi-card blue">
+                <div class="kpi-label">Novembro (Zero a Zero Real)</div>
+                <div class="kpi-value">-R$ 0,73</div>
+                <div class="kpi-desc">Apenas 73 centavos com a Reserva</div>
+            </div>
+            <div class="kpi-card purple">
+                <div class="kpi-label">Superávit Fevereiro/27</div>
+                <div class="kpi-value">+R$ 460,31</div>
+                <div class="kpi-desc">Fatura Bradesco R$ 1.255 e Nubank R$ 953</div>
+            </div>
+            <div class="kpi-card orange">
+                <div class="kpi-label">Superávit Março/27</div>
+                <div class="kpi-value">+R$ 517,31</div>
+                <div class="kpi-desc">Fim dos Empréstimos MP 1 e 2</div>
+            </div>
+        </div>
+
+        <div class="progress-box">
+            <div class="progress-header">
+                <span class="progress-title">Progresso Geral de Execução</span>
+                <span class="progress-percentage" id="progressPercentage">0%</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progressBar"></div>
+            </div>
+        </div>
+
+        <!-- FASE 0: HOJE -->
+        <div class="section-phase">
+            <div class="phase-header">
+                <div class="phase-title-group">
+                    <span class="phase-tag tag-urgent">Fase 0 — Hoje</span>
+                    <h2 class="phase-title">26/09/2026 — Choque de Liquidez e Colchão Blindado</h2>
+                </div>
+                <div class="phase-meta">
+                    <span class="phase-count" id="count-fase-0">0/5 concluídos</span>
+                </div>
+            </div>
+            <div class="phase-content">
+                <div class="task-item" data-id="task_0_1">
+                    <input type="checkbox" id="t01">
+                    <div class="task-body">
+                        <div class="task-title">Passar Cartão Bradesco ELO na Maquininha da Irmã</div>
+                        <div class="task-desc">Passar o teto de R$ 6.751,54 em 10x de R$ 675,15/mês (taxa 12,12%). Sacar R$ 5.933,26 líquidos no ato.</div>
+                        <span class="task-amount-tag">Entrada Líquida: +R$ 5.933,26</span>
+                        <span class="task-notes-tag">Obs: Saque Maquininha da Irmã</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_0_2">
+                    <input type="checkbox" id="t02">
+                    <div class="task-body">
+                        <div class="task-title">Liquidar Imediatamente a Fatura Vencida do Cartão Nubank</div>
+                        <div class="task-desc">Pagar os R$ 6.160,00 vencidos em 25/09 (usando R$ 5.933,26 do saque + R$ 226,74 do seu saldo) para evitar juros rotativos de 14%+ ao mês.</div>
+                        <span class="task-amount-tag">Pagamento: R$ 6.160,00</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_0_3">
+                    <input type="checkbox" id="t03">
+                    <div class="task-body">
+                        <div class="task-title">Pagar Conta de Água de Setembro</div>
+                        <div class="task-desc">Quitar a fatura de água que vence em 30/09 utilizando R$ 90,00 do saldo em conta.</div>
+                        <span class="task-amount-tag">Pagamento: R$ 90,00</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_0_4">
+                    <input type="checkbox" id="t04">
+                    <div class="task-body">
+                        <div class="task-title">Alocar Colchão de R$ 1.150,38 na Reserva Obrigatória de Transição</div>
+                        <div class="task-desc">Do seu saldo de R$ 1.467,12, foram usados R$ 316,74 para completar o Nubank e a água. Os R$ 1.150,38 restantes ficam blindados no banco para levar a Outubro.</div>
+                        <span class="task-amount-tag">Colchão Blindado: R$ 1.150,38</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_0_5">
+                    <input type="checkbox" id="t05">
+                    <div class="task-body">
+                        <div class="task-title">Confirmar Liberação do Limite no Aplicativo Nubank</div>
+                        <div class="task-desc">Checar se o pagamento de R$ 6.160,00 restabeleceu o limite do cartão para permitir o suporte de Outubro no cunhado.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FASE 1: OUTUBRO -->
+        <div class="section-phase">
+            <div class="phase-header">
+                <div class="phase-title-group">
+                    <span class="phase-tag tag-success">Fase 1 — Outubro</span>
+                    <h2 class="phase-title">Outubro/2026 — Saque Cunhado Calibrado e Reserva para Novembro</h2>
+                </div>
+                <div class="phase-meta">
+                    <span class="phase-count" id="count-fase-1">0/7 concluídos</span>
+                </div>
+            </div>
+            <div class="phase-content">
+                <div class="task-item" data-id="task_1_1">
+                    <input type="checkbox" id="t11">
+                    <div class="task-body">
+                        <div class="task-title">Retirar Colchão de R$ 1.150,38 da Reserva Obrigatória (01/10)</div>
+                        <div class="task-desc">Utilizar o colchão de transição trazido de Setembro para cobrir os primeiros vencimentos do mês.</div>
+                        <span class="task-amount-tag">Retirada da Reserva: +R$ 1.150,38</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_1_2">
+                    <input type="checkbox" id="t12">
+                    <div class="task-body">
+                        <div class="task-title">Implementar Escala de Home-Office da Equipe (Segundas e Terças)</div>
+                        <div class="task-desc">Sincronizar 2 aprendizes e 1 júnior. Você fica home-office Seg/Ter e presencial Qua/Qui/Sex (14 dias presenciais). Economia de R$ 287 no mês.</div>
+                        <span class="task-amount-tag">Economia: R$ 287,00</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_1_3">
+                    <input type="checkbox" id="t13">
+                    <div class="task-body">
+                        <div class="task-title">Pagar Custos Vitais do Dia 05/10</div>
+                        <div class="task-desc">Aluguel (R$ 800) + Luz (~R$ 200) + Vivo (R$ 176,90) + Empréstimos Mercado Pago (R$ 393,62) = R$ 1.570,52.</div>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_1_4">
+                    <input type="checkbox" id="t14">
+                    <div class="task-body">
+                        <div class="task-title">Operação de Saque Calibrado no Cunhado (25/10) — R$ 3.500 Líquidos</div>
+                        <div class="task-desc">Passar no cartão Nubank na maquininha do cunhado o valor de R$ 3.982,70 em 10x de R$ 398,27/mês para sacar R$ 3.500,00 líquidos.</div>
+                        <span class="task-amount-tag">Entrada Líquida: +R$ 3.500,00</span>
+                        <span class="task-notes-tag">Obs: Saque Maquininha do Cunhado</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_1_5">
+                    <input type="checkbox" id="t15">
+                    <div class="task-body">
+                        <div class="task-title">Liquidar Cartão Bradesco ( ELO ) no Dia 25/10</div>
+                        <div class="task-desc">Pagar R$ 5.225,15 à vista (fatura regular de R$ 4.550 + 1ª parcela da maquininha da irmã de R$ 675,15).</div>
+                        <span class="task-amount-tag">Pagamento: R$ 5.225,15</span>
+                        <span class="task-notes-tag">Obs: Parcela 01/10 Maquininha Irmã</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_1_6">
+                    <input type="checkbox" id="t16">
+                    <div class="task-body">
+                        <div class="task-title">Guardar R$ 1.128,96 na Reserva Obrigatória para Novembro (31/10)</div>
+                        <div class="task-desc">Com a calibração do saque para R$ 3.500, alocar R$ 1.128,96 na Reserva Obrigatória para cobrir integralmente Novembro. Outubro fecha 100% equilibrado (R$ 0,00)!</div>
+                        <span class="task-amount-tag">Ponte Reserva: R$ 1.128,96</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_1_7">
+                    <input type="checkbox" id="t17">
+                    <div class="task-body">
+                        <div class="task-title">G4 Valley em Alphaville — Controle Estrito de Custos</div>
+                        <div class="task-desc">Gastar no máximo R$ 250 no total dos 3 dias (alimentação leve e transporte local), pago estritamente no PIX/débito.</div>
+                        <span class="task-amount-tag">Teto: R$ 250,00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FASE 2: NOVEMBRO -->
+        <div class="section-phase">
+            <div class="phase-header">
+                <div class="phase-title-group">
+                    <span class="phase-tag tag-action">Fase 2 — Novembro</span>
+                    <h2 class="phase-title">Novembro/2026 — O Ponto de Alívio & Zero a Zero Real</h2>
+                </div>
+                <div class="phase-meta">
+                    <span class="phase-count" id="count-fase-2">0/7 concluídos</span>
+                </div>
+            </div>
+            <div class="phase-content">
+                <div class="task-item" data-id="task_2_1">
+                    <input type="checkbox" id="t21">
+                    <div class="task-body">
+                        <div class="task-title">Retirar R$ 1.128,96 da Reserva Obrigatória (01/11)</div>
+                        <div class="task-desc">Injetar no caixa de Novembro os R$ 1.128,96 trazidos de Outubro. O mês fica perfeitamente equilibrado e sem déficits (diferença de apenas 73 centavos)!</div>
+                        <span class="task-amount-tag">Injeção Caixa: +R$ 1.128,96</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_2_2">
+                    <input type="checkbox" id="t22">
+                    <div class="task-body">
+                        <div class="task-title">Pagar Parcela 01/10 do Novo Estorno Nubank (10/11)</div>
+                        <div class="task-desc">Pagamento da 1ª parcela de R$ 433,00 do contrato do novo Estorno Nubank.</div>
+                        <span class="task-amount-tag">Parcela 01/10: R$ 433,00</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_2_3">
+                    <input type="checkbox" id="t23">
+                    <div class="task-body">
+                        <div class="task-title">Manter Home-Office Seg/Ter (11 dias presenciais no mês)</div>
+                        <div class="task-desc">Mês com 2 feriados em dias úteis (02/11 e 20/11). Economia de R$ 328 no orçamento de marmitas e transporte.</div>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_2_4">
+                    <input type="checkbox" id="t24">
+                    <div class="task-body">
+                        <div class="task-title">Pagar Última Parcela do Estorno Nubank Antigo (20/11)</div>
+                        <div class="task-desc">Pagar a parcela 05/05 de R$ 226,00 no dia 20/11. Esse contrato é extinto para sempre!</div>
+                        <span class="task-amount-tag">Libera +R$ 226/mês em Dezembro</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_2_5">
+                    <input type="checkbox" id="t25">
+                    <div class="task-body">
+                        <div class="task-title">Pagar Fatura Cartão Bradesco ( ELO ) (25/11)</div>
+                        <div class="task-desc">Pagar R$ 3.125,15 no dia 25/11 (compras caíram para R$ 2.450 + 2ª parcela da maquininha da irmã R$ 675,15).</div>
+                        <span class="task-notes-tag">Obs: Parcela 02/10 Maquininha Irmã</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_2_6">
+                    <input type="checkbox" id="t26">
+                    <div class="task-body">
+                        <div class="task-title">Pagar Fatura Cartão Nubank (25/11)</div>
+                        <div class="task-desc">Pagar R$ 1.598,27 no dia 25/11 (compras caíram para R$ 1.200 + 1ª parcela da maquininha do cunhado R$ 398,27).</div>
+                        <span class="task-notes-tag">Obs: Parcela 01/10 Maquininha Cunhado</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_2_7">
+                    <input type="checkbox" id="t27">
+                    <div class="task-body">
+                        <div class="task-title">Pagar Parcela 01/12 da Mackenzie (28/11)</div>
+                        <div class="task-desc">Mensalidade da pós (R$ 600,00) cobrada na fatura do cartão Nubank paga no final de Novembro.</div>
+                        <span class="task-amount-tag">Mensalidade: R$ 600,00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FASE 3: DEZEMBRO -->
+        <div class="section-phase">
+            <div class="phase-header">
+                <div class="phase-title-group">
+                    <span class="phase-tag tag-success">Fase 3 — Dezembro</span>
+                    <h2 class="phase-title">Dezembro/2026 — Oficialmente no Azul (+R$ 154) & Viagem</h2>
+                </div>
+                <div class="phase-meta">
+                    <span class="phase-count" id="count-fase-3">0/5 concluídos</span>
+                </div>
+            </div>
+            <div class="phase-content">
+                <div class="task-item" data-id="task_3_1">
+                    <input type="checkbox" id="t31">
+                    <div class="task-body">
+                        <div class="task-title">Pagar Parcela 02/10 do Estorno Nubank (10/12)</div>
+                        <div class="task-desc">Pagamento da 2ª parcela de R$ 433,00 do contrato do Estorno Nubank.</div>
+                        <span class="task-amount-tag">Parcela 02/10: R$ 433,00</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_3_2">
+                    <input type="checkbox" id="t32">
+                    <div class="task-body">
+                        <div class="task-title">Viagem para Santa Catarina — Executar Teto de R$ 450</div>
+                        <div class="task-desc">Voo e hotel com café da manhã pagos. 1 jantar reforçado por dia (R$ 80 a R$ 100) + transfer local. Pagamento 100% em dinheiro reservado.</div>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_3_3">
+                    <input type="checkbox" id="t33">
+                    <div class="task-body">
+                        <div class="task-title">Gestão do Google AI Ultra nas Férias (Economia Líquida de R$ 1.000)</div>
+                        <div class="task-desc">Como o estorno de R$ 800 da Afixcode entra e a ferramenta fica pausada sem cobrança, você economiza R$ 1.000 e Dezembro fecha no azul (+R$ 154,31)!</div>
+                        <span class="task-amount-tag">Superávit Dezembro: +R$ 154,31</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_3_4">
+                    <input type="checkbox" id="t34">
+                    <div class="task-body">
+                        <div class="task-title">Pagar Faturas de Cartão com Queda Acentuada (25/12)</div>
+                        <div class="task-desc">Bradesco ELO cai para R$ 2.075,15 (com 3ª parcela da irmã). Nubank cai para R$ 1.398,27 (com 2ª parcela do cunhado).</div>
+                        <span class="task-notes-tag">Obs: Parcela 03/10 Irmã | Parcela 02/10 Cunhado</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_3_5">
+                    <input type="checkbox" id="t35">
+                    <div class="task-body">
+                        <div class="task-title">Festejar a Virada de Ano no Azul</div>
+                        <div class="task-desc">O mês fecha positivo com +R$ 154,31 livres. A fase crítica de maior risco do ano está 100% superada!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FASE 4: JANEIRO A MARÇO 2027 -->
+        <div class="section-phase">
+            <div class="phase-header">
+                <div class="phase-title-group">
+                    <span class="phase-tag tag-success">Fase 4 — Q1 2027</span>
+                    <h2 class="phase-title">Janeiro a Março/2027 — A Consolidação & Superávits em Equilíbrio</h2>
+                </div>
+                <div class="phase-meta">
+                    <span class="phase-count" id="count-fase-4">0/5 concluídos</span>
+                </div>
+            </div>
+            <div class="phase-content">
+                <div class="task-item" data-id="task_4_1">
+                    <input type="checkbox" id="t41">
+                    <div class="task-body">
+                        <div class="task-title">Janeiro/2027: Parcela 03/10 Estorno Nubank & Gestão do Fluxo</div>
+                        <div class="task-desc">Pagar parcela de R$ 433 no dia 10. O saldo acumulado da virada absorve quase todo o fluxo (apenas -R$ 138 de resíduo que é eliminado logo em Fevereiro).</div>
+                        <span class="task-notes-tag">Obs: Parcela 04/10 Irmã | Parcela 03/10 Cunhado</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_4_2">
+                    <input type="checkbox" id="t42">
+                    <div class="task-body">
+                        <div class="task-title">Fevereiro/2027: Faturas Reais Pagas e Superávit de +R$ 460,31</div>
+                        <div class="task-desc">Bradesco ELO pago em R$ 1.255,15 (R$ 580 regular + R$ 675,15 máquina), Nubank em R$ 953,27 (R$ 555 regular + R$ 398,27 máquina) e Estorno Nubank R$ 433. Sobra livre de +R$ 460,31!</div>
+                        <span class="task-amount-tag">Superávit Livre: +R$ 460,31</span>
+                        <span class="task-notes-tag">Obs: Parcela 05/10 Irmã | Parcela 04/10 Cunhado</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_4_3">
+                    <input type="checkbox" id="t43">
+                    <div class="task-body">
+                        <div class="task-title">Março/2027: Quitação dos Empréstimos 1 e 2 do Mercado Pago</div>
+                        <div class="task-desc">Pagar as parcelas 12/12 dos dois empréstimos do MP. Esses contratos são encerrados para sempre, liberando +R$ 344/mês permanentemente. O mês fecha com +R$ 517,31 de sobra!</div>
+                        <span class="task-amount-tag">Superávit: +R$ 517,31</span>
+                        <span class="task-notes-tag">Obs: Parcela 06/10 Irmã | Parcela 05/10 Cunhado</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_4_4">
+                    <input type="checkbox" id="t44">
+                    <div class="task-body">
+                        <div class="task-title">Acumular Quase R$ 1.000 Livres para a Reserva de Emergência</div>
+                        <div class="task-desc">Somando os superávits de Fevereiro (+R$ 460) e Março (+R$ 517), você acumula quase R$ 1.000 limpos no bolso para restabelecer seu fundo de reserva!</div>
+                        <span class="task-amount-tag">Reserva Recomposta: ~R$ 1.000,00</span>
+                    </div>
+                </div>
+                <div class="task-item" data-id="task_4_5">
+                    <input type="checkbox" id="t45">
+                    <div class="task-body">
+                        <div class="task-title">Entrar em Abril/2027 com Superávit Recorrente Acima de R$ 1.500/mês</div>
+                        <div class="task-desc">Com os empréstimos MP 1 e 2 mortos, o fluxo atinge velocidade de cruzeiro com mais de R$ 1.500 a R$ 2.000 livres todos os meses para investimentos.</div>
+                        <span class="task-amount-tag">Velocidade de Cruzeiro: > R$ 1.500/mês</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Seu progresso é salvo automaticamente neste navegador.</span>
+            <button class="btn-reset" onclick="resetAllCheckboxes()">Limpar / Resetar Checklists</button>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'plano_financeiro_henrique_state_final_v5';
+
+        function loadState() {
+            try {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                return saved ? JSON.parse(saved) : {};
+            } catch (e) {
+                return {};
+            }
+        }
+
+        function saveState(state) {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+            } catch (e) {}
+        }
+
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.task-item input[type="checkbox"]');
+            const total = checkboxes.length;
+            let checked = 0;
+
+            const state = {};
+
+            checkboxes.forEach(cb => {
+                const item = cb.closest('.task-item');
+                const id = item.getAttribute('data-id');
+                if (cb.checked) {
+                    checked++;
+                    item.classList.add('completed');
+                    state[id] = true;
+                } else {
+                    item.classList.remove('completed');
+                    state[id] = false;
+                }
+            });
+
+            saveState(state);
+
+            const percentage = total > 0 ? Math.round((checked / total) * 100) : 0;
+            document.getElementById('progressPercentage').innerText = percentage + '%';
+            document.getElementById('progressBar').style.width = percentage + '%';
+
+            // Update phase counts
+            for (let i = 0; i <= 4; i++) {
+                const phaseSection = document.querySelectorAll('.section-phase')[i];
+                if (phaseSection) {
+                    const phaseCbs = phaseSection.querySelectorAll('input[type="checkbox"]');
+                    const phaseChecked = Array.from(phaseCbs).filter(c => c.checked).length;
+                    const countEl = document.getElementById(`count-fase-${i}`);
+                    if (countEl) {
+                        countEl.innerText = `${phaseChecked}/${phaseCbs.length} concluídos`;
+                    }
+                }
+            }
+        }
+
+        function initCheckboxes() {
+            const state = loadState();
+            const checkboxes = document.querySelectorAll('.task-item input[type="checkbox"]');
+
+            checkboxes.forEach(cb => {
+                const item = cb.closest('.task-item');
+                const id = item.getAttribute('data-id');
+                if (state[id]) {
+                    cb.checked = true;
+                    item.classList.add('completed');
+                } else {
+                    cb.checked = false;
+                    item.classList.remove('completed');
+                }
+
+                cb.addEventListener('change', updateProgress);
+            });
+
+            updateProgress();
+        }
+
+        function resetAllCheckboxes() {
+            if (confirm("Tem certeza que deseja resetar todos os checkboxes do plano?")) {
+                localStorage.removeItem(STORAGE_KEY);
+                const checkboxes = document.querySelectorAll('.task-item input[type="checkbox"]');
+                checkboxes.forEach(cb => {
+                    cb.checked = false;
+                    cb.closest('.task-item').classList.remove('completed');
+                });
+                updateProgress();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initCheckboxes);
+    </script>
+</body>
+</html>

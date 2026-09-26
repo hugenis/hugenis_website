@@ -5,19 +5,33 @@ import "./pages/hugenisHome.css";
 import { SiteLayout } from "./components/Layout";
 import HomePage from "./pages/HomePage";
 
-function App(): JSX.Element {
+function App(): JSX.Element | null {
+  const [isPlano] = useState<boolean>(() => {
+    return typeof window !== "undefined" && window.location.pathname.replace(/\/+$/, "") === "/plano_2027";
+  });
+
   const [showSplash, setShowSplash] = useState<boolean>(() => {
     return window.localStorage.getItem("hugenis:splash-seen") !== "true";
   });
 
   useEffect(() => {
-    if (!showSplash) return;
+    if (isPlano) {
+      window.location.replace("/plano_2027/");
+    }
+  }, [isPlano]);
+
+  useEffect(() => {
+    if (!showSplash || isPlano) return;
 
     window.localStorage.setItem("hugenis:splash-seen", "true");
     const timer = window.setTimeout(() => setShowSplash(false), 2200);
 
     return () => window.clearTimeout(timer);
-  }, [showSplash]);
+  }, [showSplash, isPlano]);
+
+  if (isPlano) {
+    return null;
+  }
 
   return (
     <>
