@@ -14,6 +14,7 @@ import {
   ShieldCheck,
   Check
 } from "lucide-react";
+import { HeroInteractiveCanvas } from "../components/HeroInteractiveCanvas";
 const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const reveal = {
@@ -140,8 +141,9 @@ const PROCESS_STEPS = [
 export default function HomePage(): JSX.Element {
   return (
     <div id="inicio" className="homeRoot">
-      {/* 1. HERO SECTION — CENTRALIZADO COM BACKGROUND ARQUITETURAL LEVE (32 KB) */}
+      {/* 1. HERO SECTION — CENTRALIZADO COM CAMPO INTERATIVO QUE SEGUE O MOUSE */}
       <section className="band band--hero">
+        <HeroInteractiveCanvas />
         <div className="container">
           <motion.div
             className="hero hero--centered"
