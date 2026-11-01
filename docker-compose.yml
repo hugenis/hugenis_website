@@ -1,0 +1,9 @@
+services:
+  hugenis-website:
+    build:
+      context: ./site
+      dockerfile: Dockerfile
+    container_name: hugenis-website
+    restart: always
+    expose:
+      - "80"
