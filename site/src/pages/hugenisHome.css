@@ -1641,8 +1641,9 @@ body::after {
 .cookieBanner {
   position: fixed;
   bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   width: calc(100% - 32px);
   max-width: 680px;
   z-index: 1150;
