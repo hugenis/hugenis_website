@@ -12,53 +12,106 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-    <title>Hugenis | Soluções Inteligentes em Software e IA</title>
+    <title>Hugenis | Sites, Sistemas Web, Apps Mobile &amp; Inteligência Artificial</title>
 
     <meta
       name="description"
-      content="A Hugenis é especialista no desenvolvimento de ferramentas de software, aplicações web com Inteligência Artificial e soluções tecnológicas sob medida. Transformamos ideias em sistemas inteligentes, escaláveis e orientados a resultados."
+      content="A Hugenis cria sites, sistemas de gestão web, aplicativos mobile e automações com Inteligência Artificial privada para organizar sua empresa e impulsionar resultados. Conheça também o Hugenis Enterprise."
     />
+    <link rel="canonical" href="https://hugenis.com/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Hugenis" />
     <meta
       property="og:title"
-      content="Hugenis | Soluções Inteligentes em Software e IA"
+      content="Hugenis | Engenharia e Inovação que Geram Confiança"
     />
     <meta
       property="og:description"
-      content="Especialistas em desenvolvimento de software, aplicações web com IA e soluções tecnológicas personalizadas. Criamos sistemas inteligentes para impulsionar negócios e inovação."
+      content="Criamos sites, sistemas de gestão, aplicativos mobile e automações com IA privada para organizar sua empresa e atender melhor seus clientes."
     />
     <meta property="og:url" content="https://hugenis.com/" />
-    <meta property="og:image" content="https://hugenis.com/hugenis-logo.png" />
+    <meta property="og:image" content="https://hugenis.com/og-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="Logo Hugenis - Soluções em Software e Inteligência Artificial"
+      content="Hugenis - Engenharia de Software, Sistemas Web, Mobile e Inteligência Artificial"
     />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Hugenis | Soluções Inteligentes em Software e IA"
+      content="Hugenis | Engenharia e Inovação que Geram Confiança"
     />
     <meta
       name="twitter:description"
-      content="Desenvolvimento de software, aplicações web com Inteligência Artificial e soluções tecnológicas sob medida para empresas que buscam inovação e performance."
+      content="Sites, sistemas de gestão, aplicativos mobile e automações com Inteligência Artificial para empresas que buscam organização e escala."
     />
-    <meta name="twitter:image" content="https://hugenis.com/hugenis-logo.png" />
+    <meta name="twitter:image" content="https://hugenis.com/og-share.jpg" />
+
+    <!-- Google Consent Mode v2 Default Initialization -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){window.dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'functionality_storage': 'granted',
+        'security_storage': 'granted',
+        'wait_for_update': 500
+      });
+    </script>
+
+    <!-- Schema.org Structured Data (Organization & Hugenis Enterprise) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://hugenis.com/#organization",
+            "name": "Hugenis",
+            "legalName": "HUGENIS LIMITADA",
+            "taxID": "66.842.737/0001-60",
+            "url": "https://hugenis.com/",
+            "logo": "https://hugenis.com/hugenis-logo.png",
+            "image": "https://hugenis.com/og-share.jpg",
+            "email": "contato@hugenis.com",
+            "telephone": "+55-11-96998-1157",
+            "founder": {
+              "@type": "Person",
+              "name": "Henrique Germano"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Rua Plínio Espíndola Kerr, 44, Sala 3 - Jardim Ipanema",
+              "addressLocality": "São Paulo",
+              "addressRegion": "SP",
+              "postalCode": "04784-030",
+              "addressCountry": "BR"
+            }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "Hugenis Enterprise",
+            "operatingSystem": "Web",
+            "applicationCategory": "BusinessApplication",
+            "description": "O Sistema Operacional da sua Empresa: gestão integrada de processos (SOPs), metas em tempo real e Segunda Mente corporativa com IA privada (BYOK).",
+            "publisher": {
+              "@id": "https://hugenis.com/#organization"
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
-    <script>
-      (function() {
-        var p = window.location.pathname.replace(/\/+$/, "");
-        if (p === "/plano_2027") {
-          window.location.replace("/plano_2027/");
-        }
-      })();
-    </script>
     <script type="module" src="/src/main.tsx"></script>
 
     <!-- AfixCode Chatbot Widget -->

@@ -4,6 +4,7 @@ import "./hugenis-tokens.css";
 import "./App.css";
 import "./pages/hugenisHome.css";
 import { SiteLayout } from "./components/Layout";
+import { CookieConsent } from "./components/CookieConsent";
 import HomePage from "./pages/HomePage";
 import TermsPage from "./pages/TermsPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
@@ -17,15 +18,13 @@ function normalizePathname(rawPath: string): string {
   if (cleaned === "/policy" || cleaned === "/privacy" || cleaned === "/privacy-policy" || cleaned === "/privacidade") {
     return "/policy";
   }
-  return cleaned;
+  return "/";
 }
 
-function App(): JSX.Element | null {
+function App(): JSX.Element {
   const [pathname, setPathname] = useState<string>(() => {
     return typeof window !== "undefined" ? normalizePathname(window.location.pathname) : "/";
   });
-
-  const isPlano = pathname === "/plano_2027";
 
   const [showSplash, setShowSplash] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
@@ -43,19 +42,23 @@ function App(): JSX.Element | null {
   }, []);
 
   useEffect(() => {
-    if (isPlano) {
-      window.location.replace("/plano_2027/");
+    if (pathname === "/terms") {
+      document.title = "Termos e Condições de Uso | Hugenis";
+    } else if (pathname === "/policy") {
+      document.title = "Política de Privacidade e LGPD | Hugenis";
+    } else {
+      document.title = "Hugenis | Sites, Sistemas Web, Apps Mobile & Inteligência Artificial";
     }
-  }, [isPlano]);
+  }, [pathname]);
 
   useEffect(() => {
-    if (!showSplash || isPlano) return;
+    if (!showSplash) return;
 
     window.localStorage.setItem("hugenis:splash-seen", "true");
     const timer = window.setTimeout(() => setShowSplash(false), 2200);
 
     return () => window.clearTimeout(timer);
-  }, [showSplash, isPlano]);
+  }, [showSplash]);
 
   const handleNavigate = (targetPath: string, targetHash?: string) => {
     const normalized = normalizePathname(targetPath);
@@ -78,9 +81,6 @@ function App(): JSX.Element | null {
     }
   };
 
-  if (isPlano) {
-    return null;
-  }
 
   const renderPage = (): JSX.Element => {
     if (pathname === "/terms") {
@@ -126,6 +126,8 @@ function App(): JSX.Element | null {
       <SiteLayout currentPath={pathname} onNavigate={handleNavigate}>
         {renderPage()}
       </SiteLayout>
+
+      <CookieConsent onNavigate={handleNavigate} />
     </>
   );
 }

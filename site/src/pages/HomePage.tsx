@@ -138,13 +138,6 @@ const PROCESS_STEPS = [
 ];
 
 export default function HomePage(): JSX.Element {
-  const handleScrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
   return (
     <div id="inicio" className="homeRoot">
       {/* 1. HERO SECTION — CENTRALIZADO COM BACKGROUND ARQUITETURAL LEVE (32 KB) */}
@@ -166,13 +159,14 @@ export default function HomePage(): JSX.Element {
             </motion.p>
 
             <motion.div className="hero__actions" variants={reveal}>
-              <button
-                type="button"
+              <a
+                href="https://wa.me/5511969981157?text=Ol%C3%A1%21%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20para%20minha%20empresa."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hug-btn hug-btn-primary hero__ctaBtn"
-                onClick={() => handleScrollTo("contato")}
               >
                 Vamos Conversar sobre seu Projeto <ArrowRight size={18} />
-              </button>
+              </a>
             </motion.div>
           </motion.div>
         </div>
@@ -291,13 +285,14 @@ export default function HomePage(): JSX.Element {
                 </p>
               </div>
               <div className="enterpriseBanner__cta">
-                <button
-                  type="button"
+                <a
+                  href="https://wa.me/5511969981157?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Hugenis%20Enterprise."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hug-btn hug-btn-primary"
-                  onClick={() => handleScrollTo("contato")}
                 >
                   Solicitar Demonstração <ArrowRight size={17} />
-                </button>
+                </a>
               </div>
             </div>
 
