@@ -2,12 +2,13 @@ import type { JSX } from "react";
 
 type BrandVariant = "dark" | "light";
 
-function LogoMark(): JSX.Element {
+export function LogoMark(): JSX.Element {
   return (
     <img
       className="brand__markImage"
-      src="/format-3.png"
-      alt="Logotipo da Hugenis"
+      src="/hugenis-icon.png"
+      alt="Símbolo da Hugenis"
+      decoding="async"
     />
   );
 }
@@ -19,12 +20,12 @@ export function Wordmark({ variant = "light" }: WordmarkProps): JSX.Element {
 
   return (
     <div className={`brand ${isDark ? "brand--dark" : "brand--light"}`}>
-      <div className={`brand__mark ${isDark ? "mark--dark" : "mark--light"}`}>
-        <LogoMark />
-      </div>
-      <span className="brand__name">
-        hu<span className="accent">gen</span>is
-      </span>
+      <img
+        className="brand__fullLogo"
+        src="/hugenis-logo.png"
+        alt="Hugenis"
+        decoding="async"
+      />
     </div>
   );
 }

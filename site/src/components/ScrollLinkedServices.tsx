@@ -363,8 +363,8 @@ export default function ScrollLinkedServices(): JSX.Element {
                 className={`service-scroll-card ${isActive ? "active" : ""}`}
               >
                 <div className="card-top">
-                  <div className="service-icon-box" style={{ borderColor: isActive ? service.color : "transparent" }}>
-                    <IconComponent size={24} style={{ color: isActive ? service.color : "#9ca3af" }} />
+                  <div className="service-icon-box" style={{ borderColor: isActive ? service.color : "rgba(15, 23, 42, 0.08)" }}>
+                    <IconComponent size={24} style={{ color: isActive ? service.color : "#64748b" }} />
                   </div>
                   <h3 className="service-card-title">{service.title}</h3>
                 </div>

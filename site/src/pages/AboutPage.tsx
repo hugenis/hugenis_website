@@ -104,28 +104,21 @@ export default function AboutPage(): JSX.Element {
             variants={reveal}
           >
             <img
-              src="/founder.png"
-              alt="Henrique Guilherme - Fundador da Hugenis"
+              src="/founder.webp"
+              alt="Henrique Germano - Fundador da Hugenis"
               className="quoteCard__image"
               loading="lazy"
             />
             <div className="quoteCard__content">
               <p className="quoteCard__text">
-                “Tentativa e erro fazem parte do processo.
-                <br />
-                Não buscamos saltos heroicos, buscamos consistência, sendo 1%
-                melhores do que fomos ontem.
+                A Hugenis foi fundada por Henrique Germano, profissional com formação em Ciência da Computação e especializações em Data Science (USP/ESALQ) e Governança em Cibersegurança (Mackenzie).
                 <br />
                 <br />
-                Porque, no fim,
-                <br />
-                o futuro não pertence aos que acertam de primeira —
-                <br />
-                pertence aos que persistem e avançam.”
+                Com ampla bagagem prática como líder técnico e arquiteto de sistemas, Henrique combina rigor de engenharia com visão estratégica de negócios. Sua atuação é guiada pela criação de plataformas que eliminam gargalos de gestão, integram inteligência analítica com total privacidade de dados e garantem governança sólida para empresas em crescimento.
               </p>
 
               <p className="quoteCard__signature">
-                — Henrique Guilherme
+                — Henrique Germano
                 <span>Fundador da Hugenis</span>
               </p>
             </div>
