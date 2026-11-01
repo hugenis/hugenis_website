@@ -47,7 +47,7 @@ function App(): JSX.Element {
     } else if (pathname === "/policy") {
       document.title = "Política de Privacidade e LGPD | Hugenis";
     } else {
-      document.title = "Hugenis | Sites, Sistemas Web, Apps Mobile & Inteligência Artificial";
+      document.title = "Hugenis | Engenharia de Software e Inteligência Artificial";
     }
   }, [pathname]);
 

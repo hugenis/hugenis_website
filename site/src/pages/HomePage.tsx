@@ -155,7 +155,7 @@ export default function HomePage(): JSX.Element {
             </motion.h1>
 
             <motion.p className="hero__lead" variants={reveal}>
-              Criamos sites, sistemas de gestão, aplicativos mobile e automações com IA para você organizar sua empresa e atender melhor seus clientes.
+              Soluções tecnológicas sob medida para estruturar e escalar o seu negócio: sites, sistemas de gestão, aplicativos mobile e automações com Inteligência Artificial.
             </motion.p>
 
             <motion.div className="hero__actions" variants={reveal}>
