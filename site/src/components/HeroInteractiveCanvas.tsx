@@ -11,6 +11,7 @@ interface Particle {
   color: string;
   baseSize: number;
   phase: number;
+  edgeWeight: number;
 }
 
 // Official Hugenis Design System v1.0 Ribbon Palette (Aqua -> Azure -> Indigo)
@@ -40,7 +41,6 @@ export function HeroInteractiveCanvas(): JSX.Element {
     let height = 0;
     let particles: Particle[] = [];
 
-    // Smooth mouse-tracking state
     const pointer = {
       targetX: 0,
       targetY: 0,
@@ -48,28 +48,50 @@ export function HeroInteractiveCanvas(): JSX.Element {
       y: 0,
       vx: 0,
       vy: 0,
-      active: false
+      active: false,
+      blend: 0 // 0 = default wing/edge distribution, 1 = active mouse tracking
     };
 
     const buildParticles = (w: number, h: number) => {
       const list: Particle[] = [];
-      const spacing = w < 640 ? 34 : 38;
+      const spacing = w < 640 ? 32 : 35;
       const cols = Math.ceil(w / spacing) + 2;
       const rows = Math.ceil(h / spacing) + 2;
       const offsetX = (w - (cols - 1) * spacing) * 0.5;
       const offsetY = (h - (rows - 1) * spacing) * 0.5;
 
+      // Central text sanctuary radii (keep center clean where title, subtitle & CTA sit)
+      const textRx = Math.min(w * 0.34, 410);
+      const textRy = Math.min(h * 0.42, 215);
+
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
-          // Slight organic jitter around hex/grid lattice like antigravity.google
           const jitterX = (Math.sin(r * 12.9898 + c * 78.233) * 0.5) * 14;
           const jitterY = (Math.cos(c * 45.164 + r * 93.721) * 0.5) * 14;
           const hx = offsetX + c * spacing + (r % 2 === 1 ? spacing * 0.5 : 0) + jitterX;
           const hy = offsetY + r * spacing + jitterY;
 
-          // Color mapped smoothly by angle/sector around canvas center using Hugenis Ribbon palette
-          const normAngle = (Math.atan2(hy - h * 0.5, hx - w * 0.5) + Math.PI) / (Math.PI * 2);
-          const colorIdx = Math.floor(normAngle * HUGENIS_PALETTE.length) % HUGENIS_PALETTE.length;
+          // Distance from central text block (normalized ellipse)
+          const ndx = (hx - w * 0.5) / textRx;
+          const ndy = (hy - h * 0.48) / textRy;
+          const centerEllipticalDist = Math.sqrt(ndx * ndx + ndy * ndy);
+
+          // Skip particles deep inside the central text area so the middle is 100% clean
+          if (centerEllipticalDist < 0.78) continue;
+
+          // Weight how close this particle is to the left/right edges ("pontas") of the section
+          const horizEdgeDist = Math.abs(hx - w * 0.5) / (w * 0.5); // 0 at center, 1 at left/right edge
+          const edgeWeight = Math.min(1, Math.max(0, (centerEllipticalDist - 0.78) * 1.15) * (0.55 + 0.45 * horizEdgeDist));
+
+          // Color mapped smoothly from Luminous Aqua (left wing) -> Cerulean Azure (mid-wings) -> Royal Indigo (right wing)
+          const xNorm = Math.max(0, Math.min(0.999, hx / w));
+          const yWave = Math.sin((hy / h) * Math.PI) * 0.15;
+          const palettePos = Math.max(0, Math.min(0.999, xNorm * 0.85 + yWave));
+          const colorIdx = Math.floor(palettePos * HUGENIS_PALETTE.length);
+
+          // Default orientation radiates organically from the nearest lateral wing focal point
+          const wingCenterX = hx < w * 0.5 ? w * 0.11 : w * 0.89;
+          const wingCenterY = h * 0.5;
 
           list.push({
             hx,
@@ -78,10 +100,11 @@ export function HeroInteractiveCanvas(): JSX.Element {
             y: hy,
             vx: 0,
             vy: 0,
-            angle: Math.atan2(hy - h * 0.5, hx - w * 0.5),
+            angle: Math.atan2(hy - wingCenterY, hx - wingCenterX),
             color: HUGENIS_PALETTE[colorIdx],
-            baseSize: 1.8 + ((r * 7 + c * 13) % 5) * 0.28,
-            phase: (r * 0.35 + c * 0.25)
+            baseSize: 1.9 + ((r * 7 + c * 13) % 5) * 0.3,
+            phase: r * 0.35 + c * 0.25,
+            edgeWeight
           });
         }
       }
@@ -112,7 +135,7 @@ export function HeroInteractiveCanvas(): JSX.Element {
       const rect = canvas.getBoundingClientRect();
       const mx = e.clientX - rect.left;
       const my = e.clientY - rect.top;
-      if (mx >= -40 && mx <= rect.width + 40 && my >= -40 && my <= rect.height + 40) {
+      if (mx >= -20 && mx <= rect.width + 20 && my >= -20 && my <= rect.height + 20) {
         pointer.targetX = mx;
         pointer.targetY = my;
         pointer.active = true;
@@ -135,104 +158,116 @@ export function HeroInteractiveCanvas(): JSX.Element {
     const render = () => {
       time += 0.025;
 
-      // When mouse is inactive, gently orbit the focal center around the middle of the Hero
-      if (!pointer.active) {
-        pointer.targetX = width * 0.5 + Math.cos(time * 0.55) * (width * 0.08);
-        pointer.targetY = height * 0.5 + Math.sin(time * 0.7) * (height * 0.06);
-      }
+      // Smoothly transition between default wing mode (blend = 0) and active mouse mode (blend = 1)
+      const targetBlend = pointer.active ? 1 : 0;
+      pointer.blend += (targetBlend - pointer.blend) * 0.08;
 
-      // Smooth spring-damped focal point tracking the cursor
       const prevX = pointer.x;
       const prevY = pointer.y;
-      pointer.x += (pointer.targetX - pointer.x) * 0.095;
-      pointer.y += (pointer.targetY - pointer.y) * 0.095;
+      pointer.x += (pointer.targetX - pointer.x) * 0.11;
+      pointer.y += (pointer.targetY - pointer.y) * 0.11;
       pointer.vx = pointer.x - prevX;
       pointer.vy = pointer.y - prevY;
 
       ctx.clearRect(0, 0, width, height);
 
-      // Soft ambient Aqua/Azure glow following the focal cursor
-      const glow = ctx.createRadialGradient(
-        pointer.x,
-        pointer.y,
-        20,
-        pointer.x,
-        pointer.y,
-        Math.max(width, height) * 0.48
-      );
-      glow.addColorStop(0, "rgba(76, 232, 224, 0.10)");
-      glow.addColorStop(0.45, "rgba(46, 116, 201, 0.05)");
-      glow.addColorStop(1, "rgba(242, 246, 250, 0)");
-      ctx.fillStyle = glow;
+      // Default Left & Right Wing Focal Centers (living in the side margins where there is no text)
+      const leftFocalX = width * 0.10 + Math.cos(time * 0.65) * 28;
+      const leftFocalY = height * 0.50 + Math.sin(time * 0.8) * 36;
+      const rightFocalX = width * 0.90 + Math.cos(time * 0.65 + Math.PI) * 28;
+      const rightFocalY = height * 0.50 + Math.sin(time * 0.8 + 1.2) * 36;
+
+      // Soft ambient Aqua glow on left edge & Azure/Indigo glow on right edge
+      const leftGlow = ctx.createRadialGradient(leftFocalX, leftFocalY, 10, leftFocalX, leftFocalY, width * 0.34);
+      leftGlow.addColorStop(0, "rgba(76, 232, 224, 0.12)");
+      leftGlow.addColorStop(0.5, "rgba(46, 116, 201, 0.05)");
+      leftGlow.addColorStop(1, "rgba(242, 246, 250, 0)");
+      ctx.fillStyle = leftGlow;
       ctx.fillRect(0, 0, width, height);
 
-      const influenceRadius = Math.min(width, height) * 0.62;
-      const innerCalmRadius = 125;
+      const rightGlow = ctx.createRadialGradient(rightFocalX, rightFocalY, 10, rightFocalX, rightFocalY, width * 0.34);
+      rightGlow.addColorStop(0, "rgba(46, 116, 201, 0.12)");
+      rightGlow.addColorStop(0.5, "rgba(59, 51, 154, 0.05)");
+      rightGlow.addColorStop(1, "rgba(242, 246, 250, 0)");
+      ctx.fillStyle = rightGlow;
+      ctx.fillRect(0, 0, width, height);
+
+      const wingRadius = Math.min(width * 0.42, 480);
+      const mouseRadius = Math.min(width, height) * 0.52;
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
 
-        // Vector from focal cursor to particle home
-        const dx = p.hx - pointer.x;
-        const dy = p.hy - pointer.y;
-        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        // 1. Default Edge/Wing Field (anchored at left & right edges of the section)
+        const wingX = p.hx < width * 0.5 ? leftFocalX : rightFocalX;
+        const wingY = p.hx < width * 0.5 ? leftFocalY : rightFocalY;
+        const wdx = p.hx - wingX;
+        const wdy = p.hy - wingY;
+        const wDist = Math.sqrt(wdx * wdx + wdy * wdy) || 1;
+        const wWave = Math.sin(wDist * 0.024 - time * 1.5 + p.phase * 0.25);
 
-        // Antigravity radial wave + repulsion ring around the cursor
-        const wave = Math.sin(dist * 0.022 - time * 1.6 + p.phase * 0.2);
-        let push = 0;
-        let excitement = 0;
+        const wingExcitement = Math.max(0, Math.min(1, (1 - wDist / wingRadius) * 1.15)) * p.edgeWeight;
+        const wingPush = wingExcitement * 12 + wWave * 3.5 * p.edgeWeight;
+        const wingAngle = Math.atan2(wdy, wdx);
 
-        if (dist < influenceRadius) {
-          const norm = 1 - dist / influenceRadius;
-          // Create a calm eye near the cursor and an energized ring around it (120px..420px)
-          const ringFactor = dist < innerCalmRadius
-            ? (dist / innerCalmRadius) * 0.6
-            : Math.sin(norm * Math.PI);
-          excitement = Math.max(0, ringFactor);
-          push = (dist < innerCalmRadius ? (innerCalmRadius - dist) * 0.32 : excitement * 18) + wave * 4.5;
+        // 2. Mouse Cursor Field (when user moves mouse across the section)
+        const mdx = p.hx - pointer.x;
+        const mdy = p.hy - pointer.y;
+        const mDist = Math.sqrt(mdx * mdx + mdy * mdy) || 1;
+        const mWave = Math.sin(mDist * 0.025 - time * 1.8 + p.phase * 0.2);
+
+        let mouseExcitement = 0;
+        let mousePush = 0;
+        if (mDist < mouseRadius) {
+          const norm = 1 - mDist / mouseRadius;
+          mouseExcitement = Math.sin(norm * Math.PI) * 0.95;
+          mousePush = (mDist < 110 ? (110 - mDist) * 0.35 : mouseExcitement * 20) + mWave * 4.5;
         }
+        const mouseAngle = Math.atan2(
+          p.y - pointer.y + pointer.vy * 1.8,
+          p.x - pointer.x + pointer.vx * 1.8
+        );
 
-        const dirX = dx / dist;
-        const dirY = dy / dist;
+        // Combine default wing field + active mouse field seamlessly
+        const activeMouseWeight = pointer.blend * Math.max(0, 1 - mDist / (mouseRadius * 1.15));
+        const excitement = Math.min(1, Math.max(wingExcitement, mouseExcitement * pointer.blend));
+
+        const dirX = (wdx / wDist) * (1 - activeMouseWeight) + (mdx / mDist) * activeMouseWeight;
+        const dirY = (wdy / wDist) * (1 - activeMouseWeight) + (mdy / mDist) * activeMouseWeight;
+        const push = wingPush * (1 - activeMouseWeight) + mousePush * activeMouseWeight;
 
         const targetX = p.hx + dirX * push;
         const targetY = p.hy + dirY * push;
 
-        // Spring physics on particle position
         p.vx = (p.vx + (targetX - p.x) * 0.14) * 0.78;
         p.vy = (p.vy + (targetY - p.y) * 0.14) * 0.78;
         p.x += p.vx;
         p.y += p.vy;
 
-        // Target angle points radially outward from the moving focal point (with subtle cursor velocity swirl)
-        const targetAngle = Math.atan2(
-          p.y - pointer.y + pointer.vy * 1.8,
-          p.x - pointer.x + pointer.vx * 1.8
-        );
+        // Blend orientation angle between wing flow and cursor tracking
+        let angleDiff = mouseAngle - wingAngle;
+        while (angleDiff > Math.PI) angleDiff -= Math.PI * 2;
+        while (angleDiff < -Math.PI) angleDiff += Math.PI * 2;
+        const targetAngle = wingAngle + angleDiff * activeMouseWeight;
 
-        // Smooth angle interpolation
         let diff = targetAngle - p.angle;
         while (diff > Math.PI) diff -= Math.PI * 2;
         while (diff < -Math.PI) diff += Math.PI * 2;
         p.angle += diff * 0.18;
 
-        // Protect text readability in the very center of the Hero
-        const centerDx = (p.x - width * 0.5) / 360;
-        const centerDy = (p.y - height * 0.48) / 185;
-        const centerDist2 = centerDx * centerDx + centerDy * centerDy;
-        const textSafeFade = centerDist2 < 1 ? Math.max(0.16, centerDist2 * centerDist2) : 1;
+        // Capsule dimensions & opacity: rich and vibrant on the edges ("pontas"), clean in the center
+        const dashLength = (3.4 + excitement * 10.5 + (wWave + 1) * 1.4) * (p.baseSize / 2.1);
+        const thickness = p.baseSize + excitement * 0.95;
+        const alpha = Math.min(0.9, (0.28 + excitement * 0.62) * p.edgeWeight);
 
-        // Capsule length & opacity respond dynamically to cursor ring excitement
-        const dashLength = (3.2 + excitement * 9.5 + (wave + 1) * 1.2) * (p.baseSize / 2.2);
-        const thickness = p.baseSize + excitement * 0.9;
-        const alpha = Math.min(0.88, (0.24 + excitement * 0.64) * textSafeFade);
+        if (alpha < 0.04) continue;
 
         ctx.save();
         ctx.translate(p.x, p.y);
         ctx.rotate(p.angle);
         ctx.beginPath();
         ctx.roundRect(-dashLength * 0.5, -thickness * 0.5, dashLength, thickness, thickness * 0.5);
-        ctx.fillStyle = excitement > 0.12 ? p.color : "#6E8CA8";
+        ctx.fillStyle = excitement > 0.08 ? p.color : "#6E8CA8";
         ctx.globalAlpha = alpha;
         ctx.fill();
         ctx.restore();
