@@ -57,7 +57,7 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
                 A <strong>HUGENIS LIMITADA</strong>, inscrita no CNPJ sob o nº <strong>66.842.737/0001-60</strong>, com sede na Rua Plínio Espíndola Kerr, 44, Sala 3, Jardim Ipanema, São Paulo – SP, CEP 04784-030, tem a privacidade, o sigilo corporativo e a segurança da informação como pilares inegociáveis de sua atuação.
               </p>
               <p>
-                Esta Política de Privacidade descreve de forma clara e transparente como coletamos, utilizamos, armazenamos e protegemos dados pessoais em nosso website institucional (<strong>hugenis.com</strong>), em nossos canais de atendimento e na plataforma <strong>Hugenis Enterprise</strong>, em estrita observância à Lei Geral de Proteção de Dados Pessoais (<strong>Lei nº 13.709/2018 – LGPD</strong>).
+                Esta Política de Privacidade descreve de forma clara e transparente como coletamos, utilizamos, armazenamos e protegemos dados pessoais em nosso website institucional (<strong>hugenis.com</strong>), em nossos canais de atendimento e nas plataformas <strong>Hugenis Enterprise</strong> e <strong>Hugenis Aura</strong>, em estrita observância à Lei Geral de Proteção de Dados Pessoais (<strong>Lei nº 13.709/2018 – LGPD</strong>).
               </p>
             </section>
 
@@ -68,7 +68,7 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
               </p>
               <ul className="legalList">
                 <li><strong>Dados de Contato Comercial:</strong> nome, empresa, cargo, endereço de e-mail e número de telefone/WhatsApp fornecidos voluntariamente pelo titular ao solicitar diagnóstico, demonstração ou orçamento;</li>
-                <li><strong>Dados de Autenticação em Plataformas:</strong> nome, e-mail corporativo, permissões de acesso e registros de auditoria (logs de acesso com data, hora e endereço IP) para usuários autenticados no <strong>Hugenis Enterprise</strong>;</li>
+                <li><strong>Dados de Autenticação em Plataformas:</strong> nome, e-mail, permissões de acesso e registros de auditoria (logs de acesso com data, hora e endereço IP) para usuários autenticados no <strong>Hugenis Enterprise</strong> e no <strong>Hugenis Aura</strong>;</li>
                 <li><strong>Dados Técnicos de Navegação:</strong> informações básicas de dispositivo, navegador e páginas acessadas para garantia de estabilidade, segurança cibernética e prevenção a fraudes.</li>
               </ul>
             </section>
@@ -80,7 +80,7 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
               </p>
               <ul className="legalList">
                 <li><strong>Atendimento e Propostas Comerciais (Preliminar a Contrato / Legítimo Interesse):</strong> responder solicitações de contato via WhatsApp, e-mail ou assistente virtual e elaborar propostas técnicas;</li>
-                <li><strong>Execução de Contrato:</strong> prover acesso, suporte técnico, hospedagem e evolução dos sistemas contratados e da plataforma Hugenis Enterprise;</li>
+                <li><strong>Execução de Contrato:</strong> prover acesso, suporte técnico, hospedagem e evolução dos sistemas contratados e das plataformas Hugenis Enterprise e Hugenis Aura;</li>
                 <li><strong>Segurança e Prevenção à Fraude:</strong> monitorar integridade das aplicações, autenticar acessos e manter trilhas de auditoria;</li>
                 <li><strong>Cumprimento de Obrigação Legal ou Regulatória:</strong> emissão de notas fiscais, escrituração contábil e guarda de registros conforme o Marco Civil da Internet (Lei nº 12.965/2014).</li>
               </ul>
@@ -94,6 +94,7 @@ export default function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps
               <ul className="legalList">
                 <li><strong>Isolamento por Empresa (Multi-Tenant Seguro):</strong> os documentos, procedimentos (SOPs), metas e bases de conhecimento de cada empresa cliente são estritamente isolados e jamais são compartilhados entre diferentes organizações;</li>
                 <li><strong>Chave Privada do Cliente (BYOK – Bring Your Own Key):</strong> no <strong>Hugenis Enterprise</strong>, o cliente utiliza sua própria chave de API corporativa criptografada em repouso (padrão AES-256-GCM);</li>
+                <li><strong>Privacidade no Disparo de Convites (Hugenis Aura):</strong> na conexão do WhatsApp via QR Code, a plataforma realiza exclusivamente os envios de convites autorizados pelo organizador e não lê, não acessa nem armazena conversas pessoais;</li>
                 <li><strong>Não Treinamento de Modelos Públicos:</strong> a Hugenis jamais utiliza dados confidenciais ou bases de conhecimento de seus clientes para treinar modelos públicos de Inteligência Artificial.</li>
               </ul>
             </section>

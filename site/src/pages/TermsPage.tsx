@@ -54,7 +54,7 @@ export default function TermsPage({ onNavigate }: TermsPageProps): JSX.Element {
             <section className="legalSection">
               <h2>1. Aceitação dos Termos</h2>
               <p>
-                Estes Termos e Condições de Uso regulam o acesso e a utilização do website institucional (<strong>hugenis.com</strong>), da plataforma corporativa <strong>Hugenis Enterprise</strong> e dos serviços de desenvolvimento de sites, sistemas web, aplicativos mobile, integrações e soluções de Inteligência Artificial prestados pela <strong>HUGENIS LIMITADA</strong>, pessoa jurídica de direito privado inscrita no CNPJ sob o nº <strong>66.842.737/0001-60</strong>, com sede na Rua Plínio Espíndola Kerr, 44, Sala 3, Jardim Ipanema, São Paulo – SP, CEP 04784-030.
+                Estes Termos e Condições de Uso regulam o acesso e a utilização do website institucional (<strong>hugenis.com</strong>), das plataformas proprietárias <strong>Hugenis Enterprise</strong> e <strong>Hugenis Aura</strong> e dos serviços de desenvolvimento de sites, sistemas web, aplicativos mobile, integrações e soluções de Inteligência Artificial prestados pela <strong>HUGENIS LIMITADA</strong>, pessoa jurídica de direito privado inscrita no CNPJ sob o nº <strong>66.842.737/0001-60</strong>, com sede na Rua Plínio Espíndola Kerr, 44, Sala 3, Jardim Ipanema, São Paulo – SP, CEP 04784-030.
               </p>
               <p>
                 Ao navegar neste website ou contratar nossas soluções tecnológicas, o Usuário ou Cliente declara ter lido, compreendido e concordado integralmente com as disposições destes Termos.
@@ -70,7 +70,7 @@ export default function TermsPage({ onNavigate }: TermsPageProps): JSX.Element {
                 <li>Desenvolvimento de sites institucionais, páginas comerciais (Landing Pages), sistemas de gestão web, portais de clientes e aplicativos para dispositivos móveis (Android e iOS);</li>
                 <li>Automação de rotinas operacionais e integração entre sistemas corporativos, ERPs, CRMs e bancos de dados;</li>
                 <li>Implementação de assistentes e agentes de Inteligência Artificial conectados à base documental do cliente;</li>
-                <li>Licenciamento de uso da plataforma proprietária <strong>Hugenis Enterprise</strong> (gestão de processos SOPs, acompanhamento de metas e Segunda Mente corporativa com arquitetura BYOK).</li>
+                <li>Licenciamento de uso das plataformas proprietárias <strong>Hugenis Enterprise</strong> (gestão de processos SOPs, acompanhamento de metas e Segunda Mente corporativa com arquitetura BYOK) e <strong>Hugenis Aura</strong> (sistema inteligente de convites, confirmação de presença via WhatsApp e sorteio dinâmico de fotos de capa OG:Image).</li>
               </ul>
             </section>
 
@@ -89,7 +89,7 @@ export default function TermsPage({ onNavigate }: TermsPageProps): JSX.Element {
             <section className="legalSection">
               <h2>4. Propriedade Intelectual</h2>
               <p>
-                Todo o conteúdo deste website — incluindo logotipos (marca <strong>Hugenis</strong> e <strong>Hugenis Enterprise</strong>), identidade visual, textos, layouts, códigos-fonte, arquitetura de sistemas e materiais gráficos — constitui propriedade intelectual exclusiva da <strong>HUGENIS LIMITADA</strong>, protegida pela Lei de Direitos Autorais (Lei nº 9.610/1998), Lei de Software (Lei nº 9.609/1998) e Lei de Propriedade Industrial (Lei nº 9.279/1996).
+                Todo o conteúdo deste website — incluindo logotipos (marcas <strong>Hugenis</strong>, <strong>Hugenis Enterprise</strong> e <strong>Hugenis Aura</strong>), identidade visual, textos, layouts, códigos-fonte, arquitetura de sistemas e materiais gráficos — constitui propriedade intelectual exclusiva da <strong>HUGENIS LIMITADA</strong>, protegida pela Lei de Direitos Autorais (Lei nº 9.610/1998), Lei de Software (Lei nº 9.609/1998) e Lei de Propriedade Industrial (Lei nº 9.279/1996).
               </p>
               <p>
                 Nos projetos de desenvolvimento sob encomenda, a titularidade sobre os entregáveis específicos de cada projeto observará o disposto no respectivo Contrato de Prestação de Serviços firmado com o Cliente.

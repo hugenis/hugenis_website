@@ -12,7 +12,12 @@ import {
   Cpu,
   Activity,
   ShieldCheck,
-  Check
+  Check,
+  Image,
+  QrCode,
+  UserCheck,
+  Sparkles,
+  MapPin
 } from "lucide-react";
 import { HeroInteractiveCanvas } from "../components/HeroInteractiveCanvas";
 const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -111,6 +116,41 @@ const ENTERPRISE_MODULES = [
     icon: Link2,
     title: "Integração sem Fricção",
     desc: "Conecta-se aos canais e agendas que sua equipe já usa, transformando reuniões e mensagens em tarefas organizadas.",
+    wide: true
+  }
+];
+
+const AURA_MODULES = [
+  {
+    num: "01",
+    icon: Image,
+    title: "Foto Surpresa por Convidado (OG:Image)",
+    desc: "Envie várias fotos do evento: o sistema sorteia automaticamente uma capa exclusiva na prévia do link enviado ao WhatsApp de cada convidado."
+  },
+  {
+    num: "02",
+    icon: QrCode,
+    title: "Seu Próprio WhatsApp via QR Code",
+    desc: "Conecte seus números lendo o QR Code na tela, com fila inteligente de disparo e privacidade total sem ler nem armazenar conversas pessoais."
+  },
+  {
+    num: "03",
+    icon: UserCheck,
+    title: "Confirmação Nominal da Família",
+    desc: "Cada convidado confirma presença em 1 toque apenas para as pessoas cadastradas no convite, evitando acompanhantes extras fora da lista."
+  },
+  {
+    num: "04",
+    icon: Sparkles,
+    title: "Convites Personalizados com IA",
+    desc: "Escreva um rascunho simples e nossa Inteligência Artificial formata o convite ideal para casamentos, 15 anos, aniversários, formaturas, churrascos ou eventos corporativos.",
+    wide: true
+  },
+  {
+    num: "05",
+    icon: MapPin,
+    title: "Localização Direta no Maps & Painel ao Vivo",
+    desc: "Links curtos exclusivos que abrem o pino exato do evento direto no Google Maps e painel em tempo real com o status atualizado de todos os convidados.",
     wide: true
   }
 ];
@@ -320,6 +360,86 @@ export default function HomePage(): JSX.Element {
               })}
             </div>
           </motion.div>
+
+          {/* 3B. HUGENIS AURA (#aura) — LOGO GRANDE NO TOPO & BENTO SHOWCASE */}
+          <div id="aura" className="auraShowcaseSection">
+            <motion.div
+              className="sectionHead sectionHead--enterprise"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-80px" }}
+              variants={stagger}
+            >
+              <motion.div className="enterpriseHeroLogoWrap" variants={reveal}>
+                <img
+                  src="/hugenis-aura-logo.png"
+                  alt="Hugenis Aura"
+                  className="enterpriseHeroLogo"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span
+                  className="enterpriseHeroLogo__hShimmer enterpriseHeroLogo__hShimmer--aura"
+                  aria-hidden="true"
+                />
+              </motion.div>
+              <motion.p className="enterpriseHeroSub" variants={reveal}>
+                O Sistema Inteligente de Convites e Confirmação de Presença via WhatsApp
+              </motion.p>
+            </motion.div>
+
+            <motion.div
+              className="enterpriseShowcaseCard hug-card"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={reveal}
+            >
+              {/* Topo do Card: Proposta de Valor + CTA Direto */}
+              <div className="enterpriseBanner">
+                <div className="enterpriseBanner__content">
+                  <blockquote className="enterpriseMainQuote">
+                    “Menos planilhas manuais, mais presença confirmada.”
+                  </blockquote>
+                  <p className="enterpriseMainLead">
+                    Esqueça links comuns sem prévia e horas perdidas cobrando confirmação de convidado por convidado. No Hugenis Aura, você conecta seu próprio WhatsApp via QR Code, envia fotos do evento para que cada convidado receba uma capa exclusiva sorteada automaticamente (OG:Image) e acompanha em tempo real quem confirmou presença — de casamentos, 15 anos e formaturas a encontros entre amigos e eventos corporativos VIP.
+                  </p>
+                </div>
+                <div className="enterpriseBanner__cta">
+                  <a
+                    href="https://wa.me/5511969981157?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Hugenis%20Aura."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hug-btn hug-btn-primary"
+                  >
+                    Solicitar Demonstração <ArrowRight size={17} />
+                  </a>
+                </div>
+              </div>
+
+              {/* Bento Grid dos 5 Pilares */}
+              <div className="enterpriseBentoGrid">
+                {AURA_MODULES.map((mod) => {
+                  const Icon = mod.icon;
+                  return (
+                    <div
+                      key={mod.title}
+                      className={`enterpriseBentoItem ${mod.wide ? "enterpriseBentoItem--wide" : ""}`}
+                    >
+                      <div className="enterpriseBentoItem__top">
+                        <div className="enterpriseModuleClean__icon">
+                          <Icon size={20} />
+                        </div>
+                        <span className="enterpriseBentoItem__num">{mod.num}</span>
+                      </div>
+                      <h3 className="enterpriseModuleClean__title">{mod.title}</h3>
+                      <p className="enterpriseModuleClean__desc">{mod.desc}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 

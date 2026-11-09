@@ -1052,6 +1052,18 @@ body::after {
   animation: hRibbonGleam 3.6s ease-in-out infinite;
 }
 
+.enterpriseHeroLogo__hShimmer--aura {
+  -webkit-mask-image: url("/hugenis-aura-logo.png");
+  mask-image: url("/hugenis-aura-logo.png");
+}
+
+.auraShowcaseSection {
+  margin-top: 76px;
+  padding-top: 76px;
+  border-top: 1px solid var(--border-subtle);
+  scroll-margin-top: 28px;
+}
+
 .enterpriseHeroSub {
   font-family: var(--font-display);
   font-size: 20px;
